@@ -1,6 +1,6 @@
 package edu.hw3;
 
-public class Task1AtbashCipher {
+final class Task1AtbashCipher {
     private Task1AtbashCipher() {
     }
 
