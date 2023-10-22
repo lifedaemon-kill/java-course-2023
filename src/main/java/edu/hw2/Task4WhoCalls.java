@@ -1,6 +1,6 @@
 package edu.hw2;
 
-public class Task4WhoCalls {
+final class Task4WhoCalls {
     private Task4WhoCalls() {
     }
 
@@ -16,8 +16,6 @@ public class Task4WhoCalls {
 
     public record CallingInfo(String className, String methodName) {
     }
-
-
 
 }
 

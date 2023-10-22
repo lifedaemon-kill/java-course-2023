@@ -24,7 +24,7 @@ final class Task2SquareRectangle {
             return new Rectangle(this.width, height);
         }
 
-        double area() {
+        public double area() {
             return this.width * this.height;
         }
     }

@@ -4,7 +4,7 @@ import java.util.Locale;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Task3RemoteServer {
+final class Task3RemoteServer {
     private static final Logger LOGGER = LogManager.getLogger();
     private static final String FAULTY = "faulty";
     private static final String DROP_CONNECTION = "Can't create connection";
@@ -14,11 +14,11 @@ public class Task3RemoteServer {
     }
 
     public static class ConnectionException extends RuntimeException {
-        public ConnectionException(String exception, Throwable cause) {
+        ConnectionException(String exception, Throwable cause) {
             super(exception, cause);
         }
 
-        public ConnectionException(String exception) {
+        ConnectionException(String exception) {
             super(exception);
         }
     }
@@ -46,7 +46,7 @@ public class Task3RemoteServer {
             connectionDropRate = drop;
         }
 
-        public FaultyConnection() {
+        FaultyConnection() {
         }
 
         @Override
@@ -77,7 +77,7 @@ public class Task3RemoteServer {
             connectionDropRate = drop;
         }
 
-        public DefaultConnectionManager() {
+        DefaultConnectionManager() {
         }
 
         @Override
@@ -93,7 +93,7 @@ public class Task3RemoteServer {
     }
 
     public static class FaultyConnectionManager implements ConnectionManager {
-        public FaultyConnectionManager() {
+        FaultyConnectionManager() {
         }
 
         @Override
@@ -107,7 +107,7 @@ public class Task3RemoteServer {
         private final int maxAttempts;
         private final int minAttempts = 1;
 
-        public PopularCommandExecutor(int attempts, String managerType) {
+        PopularCommandExecutor(int attempts, String managerType) {
             this.maxAttempts = Math.max(attempts, minAttempts);
 
             if (managerType.toLowerCase(Locale.ROOT).equals(FAULTY)) {
@@ -117,7 +117,7 @@ public class Task3RemoteServer {
             }
         }
 
-        public PopularCommandExecutor(String managerType) {
+        PopularCommandExecutor(String managerType) {
             this.maxAttempts = minAttempts;
 
             if (managerType.toLowerCase(Locale.ROOT).equals(FAULTY)) {
@@ -127,7 +127,7 @@ public class Task3RemoteServer {
             }
         }
 
-        public PopularCommandExecutor() {
+        PopularCommandExecutor() {
             this.maxAttempts = minAttempts;
             manager = new DefaultConnectionManager();
         }
