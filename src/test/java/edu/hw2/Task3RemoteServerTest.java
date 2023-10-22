@@ -110,7 +110,7 @@ public class Task3RemoteServerTest {
     }
 
     @Test
-    @DisplayName("Executor DefaultConnection, maxAttempts > DropRate")
+    @DisplayName("PopularCommandExecutor Default, maxAttempts > DropRate")
     void test5() {
         int dropCount = 0;
         int maxTries = 15;
@@ -129,7 +129,7 @@ public class Task3RemoteServerTest {
     }
 
     @Test
-    @DisplayName("Executor DefaultConnection, maxAttempts < dropRate")
+    @DisplayName("PopularCommandExecutor Default, maxAttempts < dropRate")
     void test6() {
         int dropCount = 0;
         int maxTries = 50;
@@ -146,6 +146,48 @@ public class Task3RemoteServerTest {
         }
         int left = maxTries / 3 / 3 - 1;
         int right = maxTries / 3 / 3 + 1;
+
+        assertThat(dropCount).isBetween(left, right);
+    }
+    @Test
+    @DisplayName("PopularCommandExecutor is Full-Default")
+    void test7() {
+        int dropCount = 0;
+        int maxTries = 50;
+
+        PopularCommandExecutor executor = new PopularCommandExecutor();
+
+        for (int i = 0; i < maxTries; i++) {
+            try {
+                executor.installPackages("nmap");
+            } catch (ConnectionException ex) {
+                dropCount++;
+                LOGGER.error(ex);
+            }
+        }
+        int left = maxTries / 3 / 3 - 1;
+        int right = maxTries / 3 / 3 + 1;
+
+        assertThat(dropCount).isBetween(left, right);
+    }
+    @Test
+    @DisplayName("PopularCommandExecutor is Faulty, Attempts default")
+    void test8() {
+        int dropCount = 0;
+        int maxTries = 50;
+
+        PopularCommandExecutor executor = new PopularCommandExecutor("Faulty");
+
+        for (int i = 0; i < maxTries; i++) {
+            try {
+                executor.installPackages("nmap");
+            } catch (ConnectionException ex) {
+                dropCount++;
+                LOGGER.error(ex);
+            }
+        }
+        int left = maxTries / 3 - 1;
+        int right = maxTries / 3 + 1;
 
         assertThat(dropCount).isBetween(left, right);
     }
