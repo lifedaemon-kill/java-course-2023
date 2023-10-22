@@ -5,13 +5,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import static edu.hw2.Task3RemoteServer.*;
 import static edu.hw2.Task3RemoteServer.ConnectionException;
 import static edu.hw2.Task3RemoteServer.FaultyConnection;
 import static edu.hw2.Task3RemoteServer.FaultyConnectionManager;
+import static edu.hw2.Task3RemoteServer.PopularCommandExecutor;
 import static edu.hw2.Task3RemoteServer.StableConnection;
-import static edu.hw2.Task3RemoteServer.PopularCommandExecutor.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class Task3RemoteServerTest {
@@ -109,14 +107,14 @@ public class Task3RemoteServerTest {
 
         assertThat(dropCount).isBetween(left, right);
     }
+
     @Test
     @DisplayName("Executor DefaultConnection, maxAttempts > DropRate")
     void test5() {
         int dropCount = 0;
         int maxTries = 15;
 
-        PopularCommandExecutor executor = new PopularCommandExecutor(4,"Default");
-
+        PopularCommandExecutor executor = new PopularCommandExecutor(4, "Default");
 
         for (int i = 0; i < maxTries; i++) {
             try {
@@ -128,6 +126,7 @@ public class Task3RemoteServerTest {
         }
         assertThat(dropCount).isZero();
     }
+
     @Test
     @DisplayName("Executor DefaultConnection, maxAttempts < dropRate")
     void test6() {
