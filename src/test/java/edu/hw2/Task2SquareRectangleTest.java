@@ -29,10 +29,16 @@ public class Task2SquareRectangleTest {
 
     }
     @Test
-    @DisplayName("Площать квадрата")
-    void squareArea() {
+    @DisplayName("Площать квадрата, Default constructor")
+    void squareAreaDefault() {
         Rectangle sqr = new Square();
         sqr = sqr.setWidth(20);
         assertThat(sqr.area()).isEqualTo(400.0);
+    }
+    @Test
+    @DisplayName("Площать квадрата, Parametrized constructor")
+    void squareAreaParameters() {
+        Rectangle sqr = new Square(30);
+        assertThat(sqr.area()).isEqualTo(900);
     }
 }
