@@ -20,19 +20,19 @@ public class Task3RemoteServerTest {
     void test1() {
         int dropCount = 0;
         int maxTries = 5;
-
-        StableConnection stableConnection = new StableConnection();
-
-        for (int i = 0; i < maxTries; i++) {
-            try {
-                stableConnection.execute("test1:" + (i - dropCount + 1));
-            } catch (ConnectionException ex) {
-                dropCount++;
-                LOGGER.error(ex);
+        try (StableConnection stableConnection = new StableConnection()) {
+            for (int i = 0; i < maxTries; i++) {
+                try {
+                    stableConnection.execute("test1:" + (i - dropCount + 1));
+                } catch (ConnectionException ex) {
+                    dropCount++;
+                    LOGGER.error(ex);
+                }
             }
-        }
+            stableConnection.close();
+            assertThat(dropCount).isZero();
 
-        assertThat(dropCount).isZero();
+        }
     }
 
     @Test
@@ -42,23 +42,24 @@ public class Task3RemoteServerTest {
 
         int maxTries = 100;
         int dropRate = 3;
+        try (FaultyConnection faultyConnection = new FaultyConnection()) {
+            faultyConnection.setDropRate(dropRate);
 
-        FaultyConnection faultyConnection = new FaultyConnection();
-        faultyConnection.setDropRate(dropRate);
-
-        for (int i = 0; i < maxTries; i++) {
-            try {
-                faultyConnection.execute("test2:" + (i - dropCount + 1));
-            } catch (ConnectionException ex) {
-                dropCount++;
-                LOGGER.error(ex);
+            for (int i = 0; i < maxTries; i++) {
+                try {
+                    faultyConnection.execute("test2:" + (i - dropCount + 1));
+                } catch (ConnectionException ex) {
+                    dropCount++;
+                    LOGGER.error(ex);
+                }
             }
+
+            int left = maxTries / dropRate - 1;
+            int right = maxTries / dropRate + 1;
+
+            faultyConnection.close();
+            assertThat(dropCount).isBetween(left, right);
         }
-
-        int left = maxTries / dropRate - 1;
-        int right = maxTries / dropRate + 1;
-
-        assertThat(dropCount).isBetween(left, right);
     }
 
     @Test
