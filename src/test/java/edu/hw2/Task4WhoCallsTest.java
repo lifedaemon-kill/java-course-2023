@@ -6,14 +6,20 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static edu.hw2.Task4WhoCalls.CallingInfo;
 import static edu.hw2.Task4WhoCalls.callingInfo;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class Task4WhoCallsTest {
     private static final Logger LOGGER = LogManager.getLogger();
 
     @Test
-    @DisplayName("Пустой запуск")
+    @DisplayName("Запуск из теста")
     void test1() {
-        LOGGER.info(callingInfo());
+        CallingInfo caller = callingInfo();
+
+        LOGGER.info(caller);
+
+        assertThat(caller.className()).isEqualTo("edu.hw2.Task4WhoCallsTest");
+        assertThat(caller.methodName()).isEqualTo("test1");
     }
 
     @Test
@@ -22,7 +28,11 @@ public class Task4WhoCallsTest {
         class A {
             public static void execute() {
                 CallingInfo callingInfo = callingInfo();
+
                 LOGGER.info(callingInfo);
+
+                assertThat(callingInfo.className()).isEqualTo("edu.hw2.Task4WhoCallsTest$1A");
+                assertThat(callingInfo.methodName()).isEqualTo("execute");
             }
         }
         A.execute();
@@ -35,7 +45,11 @@ public class Task4WhoCallsTest {
             static class B {
                 public static void execute() {
                     CallingInfo callingInfo = callingInfo();
+
                     LOGGER.info(callingInfo);
+
+                    assertThat(callingInfo.className()).isEqualTo("edu.hw2.Task4WhoCallsTest$2A$B");
+                    assertThat(callingInfo.methodName()).isEqualTo("execute");
                 }
             }
         }
