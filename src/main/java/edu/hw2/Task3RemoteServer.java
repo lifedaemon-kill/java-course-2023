@@ -35,15 +35,14 @@ public class Task3RemoteServer {
 
         @Override
         public void close() {
-
         }
     }
 
     public static class FaultyConnection implements Connection {
-        static int connectionIterator = -1;
-        int connectionDropRate = DROP_RATE;
+        private static int connectionIterator = -1;
+        private int connectionDropRate = DROP_RATE;
 
-        void setDropRate(int drop) {
+        public void setDropRate(int drop) {
             connectionDropRate = drop;
         }
 
@@ -71,10 +70,10 @@ public class Task3RemoteServer {
     }
 
     public static class DefaultConnectionManager implements ConnectionManager {
-        int connectionIterator = -1;
-        int connectionDropRate = DROP_RATE;
+        private int connectionIterator = -1;
+        private int connectionDropRate = DROP_RATE;
 
-        void setDropRate(int drop) {
+        public void setDropRate(int drop) {
             connectionDropRate = drop;
         }
 
@@ -172,27 +171,3 @@ public class Task3RemoteServer {
         }
     }
 }
-/*
-Пояснение:
-
-    работа с сервером происходит через Connection, у которого есть метод execute
-    чтобы получить соединение используется ConnectionManager
-    при выполнении команды может возникнуть исключение ConnectionException
-
-Задание
-
-Помогите Ивану и реализуйте:
-
-    2 типа соединений: StableConnection / FaultyConnection, стабильное соединение работает всегда,
-    проблемное соединение иногда бросает ConnectionException
-
-    DefaultConnectionManager, который с некоторой вероятностью возвращает проблемное соединение
-    FaultyConnectionManager, который всегда возвращает проблемное соединение
-
-    Метод tryExecute, который должен попытаться выполнить переданную команду maxAttempts раз
-
-    Если tryExecute не смог выполнить команду (превышено количество попыток),
-    то нужно вернуть ConnectionException, при этом сохранив оригинальное исключение в параметре cause
-
-    Обратите внимание, что Connection требуется закрывать (интерфейс AutoCloseable)
- */
