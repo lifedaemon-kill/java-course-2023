@@ -37,6 +37,7 @@ public class Task5ContactListTest {
         Person[] sorted = parseContacts(arrayNames, "DESC");
         assertThat(sorted).isEqualTo(expectedNames);
     }
+
     @Test
     @DisplayName("2 Тест с курсa")
     void test3() throws Exception {
@@ -50,6 +51,7 @@ public class Task5ContactListTest {
         Person[] sorted = parseContacts(arrayNames, "DESC");
         assertThat(sorted).isEqualTo(expectedNames);
     }
+
     @Test
     @DisplayName("3 Тест с курсa")
     void test4() throws Exception {
@@ -59,6 +61,7 @@ public class Task5ContactListTest {
         Person[] sorted = parseContacts(arrayNames, "DESC");
         assertThat(sorted).isEqualTo(expectedNames);
     }
+
     @Test
     @DisplayName("4 Тест с курсa")
     void test5() throws Exception {
@@ -67,6 +70,7 @@ public class Task5ContactListTest {
         Person[] sorted = parseContacts(null, "DESC");
         assertThat(sorted).isEqualTo(expectedNames);
     }
+
     @Test
     @DisplayName("У части нет фамилий")
     void test6() throws Exception {
@@ -80,5 +84,47 @@ public class Task5ContactListTest {
 
         Person[] sorted = parseContacts(arrayNames, "ABS");
         assertThat(sorted).isEqualTo(expectedNames);
+    }
+
+    @Test
+    @DisplayName("Есть пустые строки")
+    void test7() throws Exception {
+        String[] arrayNames = {"", "Janette", "", "Wolf Jsonov"};
+        Person[] expectedNames = {
+            new Person(""),
+            new Person(""),
+            new Person("Janette"),
+            new Person("Wolf Jsonov"),
+        };
+
+        Person[] sorted = parseContacts(arrayNames, "ABS");
+        assertThat(sorted).isEqualTo(expectedNames);
+    }
+    @Test
+    @DisplayName("Функции")
+    void test8() throws Exception {
+        Person person1 = new Person("Java Dusk");
+        Person person2 = new Person("Java Dusk");
+
+        boolean equals = person1.equals(person2);
+        assertThat(equals).isTrue();
+
+        int compare = person1.compareTo(person2);
+        assertThat(compare).isZero();
+
+        person1 = new Person("a b");
+        person2 = new Person("a c");
+        compare = person1.compareTo(person2);
+        assertThat(compare).isNegative();
+
+        person1 = new Person("a d");
+        person2 = new Person("c a");
+        compare = person1.compareTo(person2);
+        assertThat(compare).isPositive();
+
+        person1 = new Person("b ");
+        person2 = new Person("c a");
+        compare = person1.compareTo(person2);
+        assertThat(compare).isPositive();
     }
 }
