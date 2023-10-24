@@ -2,7 +2,7 @@ package edu.hw3;
 
 import java.util.Comparator;
 
-public class Task7TreeMapComparator {
+final class Task7TreeMapComparator {
     private Task7TreeMapComparator() {
     }
 

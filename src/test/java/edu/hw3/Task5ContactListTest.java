@@ -100,6 +100,7 @@ public class Task5ContactListTest {
         Person[] sorted = parseContacts(arrayNames, "ABS");
         assertThat(sorted).isEqualTo(expectedNames);
     }
+
     @Test
     @DisplayName("Функции")
     void test8() throws Exception {

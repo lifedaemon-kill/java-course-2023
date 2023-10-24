@@ -3,7 +3,7 @@ package edu.hw3;
 import java.util.Collection;
 import java.util.Iterator;
 
-public class Task8BackwardIterator {
+final class Task8BackwardIterator {
     private Task8BackwardIterator() {
     }
 

@@ -3,7 +3,7 @@ package edu.hw3;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-public class Task6StockMarket {
+final class Task6StockMarket {
     private Task6StockMarket() {
     }
 
