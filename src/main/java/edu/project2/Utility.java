@@ -11,7 +11,7 @@ public class Utility {
     public static final Logger LOGGER = LogManager.getLogger();
     public static Scanner input = new Scanner(System.in);
 
-    public enum Cell { PASSAGE, WALL, WAY }
+    public enum Cell { PASSAGE, WALL, WAY, DEATH }
 
     public enum GeneratorType { Kruskal }
 

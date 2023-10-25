@@ -12,18 +12,17 @@ public class Main {
 
     private static final String MENU = """
 
-            Введите параметр:
-            \t0 или exit для выхода
-            \t1 Генерация лабиринта
-            \t2 Вывод текущего лабиринта
-            \t3 Вывод решения лабиринта
-            \t4 Изменить width height seed
-            \t5 Изменить тип генератора
-            \t6 Изменить тип солвера
-            \thelp Текущие и возможные значения""";
+        Введите параметр:
+        \t0 или exit для выхода
+        \t1 Генерация лабиринта
+        \t2 Вывод текущего лабиринта
+        \t3 Вывод решения лабиринта
+        \t4 Изменить width height seed
+        \t5 Изменить тип генератора
+        \t6 Изменить тип солвера
+        \thelp Текущие и возможные значения""";
 
-
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         int width;
         int heigth;
         int seed;
@@ -46,10 +45,18 @@ public class Main {
                     maze.generateLabyrinth();
                     break;
                 case "2":
-                    maze.print();
+                    try {
+                        maze.print();
+                    } catch (Exception e) {
+                        LOGGER.error(e.getMessage(), e);
+                    }
                     break;
                 case "3":
-                    maze.printWithSolving();
+                    try {
+                        maze.printWithSolving();
+                    } catch (Exception e) {
+                        LOGGER.error(e.getMessage(), e);
+                    }
                     break;
                 case "4":
                     LOGGER.info("Введите ширину, высоту, семя генерации");
@@ -59,7 +66,7 @@ public class Main {
                     try {
                         maze.setWidthHeightSeed(width, heigth, seed);
                     } catch (IOException e) {
-                        LOGGER.error(e.getMessage());
+                        LOGGER.error(e.getMessage(), e);
                     }
                     break;
                 case "5":
@@ -68,7 +75,7 @@ public class Main {
                         maze.setGenerator(generatorType);
 
                     } catch (IOException e) {
-                        LOGGER.error(e.getMessage());
+                        LOGGER.error(e.getMessage(), e);
                     }
                     break;
                 case "6":
@@ -76,7 +83,7 @@ public class Main {
                         solverType = SolverType.valueOf(input.next());
                         maze.setSolver(solverType);
                     } catch (IOException e) {
-                        LOGGER.error(e.getMessage());
+                        LOGGER.error(e.getMessage(), e);
                     }
                     break;
                 default:

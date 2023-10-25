@@ -4,10 +4,15 @@ import edu.project2.Interfaces.Solver;
 import edu.project2.Utility.Cell;
 
 public class RightHand implements Solver {
-    private Cell[][] grid;
-
     @Override
     public Cell[][] solve(Cell[][] grid) {
-        return null;
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
+                if (grid[i][j] == Cell.PASSAGE) {
+                    grid[i][j] = Cell.DEATH;
+                }
+            }
+        }
+        return grid;
     }
 }

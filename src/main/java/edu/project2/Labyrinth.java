@@ -82,10 +82,9 @@ public final class Labyrinth {
         LOGGER.info("\n" + array);
     }
 
-    public void print() {
+    public void print() throws Exception {
         if (grid == null) {
-            LOGGER.error(GRID_IS_EMPTY_ERROR);
-            return;
+            throw new Exception(GRID_IS_EMPTY_ERROR);
         }
         printGrid(this.grid);
     }
