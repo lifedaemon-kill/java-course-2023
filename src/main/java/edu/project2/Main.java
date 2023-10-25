@@ -10,18 +10,20 @@ public class Main {
     private Main() {
     }
 
-    private static final String MENU = "\nВведите параметр:"
-                                       + "\n\t0 или exit для выхода"
-                                       + "\n\t1 Генерация лабиринта"
-                                       + "\n\t2 Вывод текущего лабиринта"
-                                       + "\n\t3 Вывод решения лабиринта"
-                                       + "\n\t4 Изменить width height seed"
-                                       + "\n\t5 Изменить тип генератора"
-                                       + "\n\t6 Изменить тип солвера"
-                                       + "\n\thelp Текущие и возможные значения";
+    private static final String MENU = """
+
+            Введите параметр:
+            \t0 или exit для выхода
+            \t1 Генерация лабиринта
+            \t2 Вывод текущего лабиринта
+            \t3 Вывод решения лабиринта
+            \t4 Изменить width height seed
+            \t5 Изменить тип генератора
+            \t6 Изменить тип солвера
+            \thelp Текущие и возможные значения""";
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         int width;
         int heigth;
         int seed;
