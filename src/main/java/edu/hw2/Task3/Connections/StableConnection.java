@@ -8,8 +8,4 @@ public class StableConnection implements Connection {
     public void execute(String command) {
         LOGGER.info(command);
     }
-
-    @Override
-    public void close() {
-    }
 }

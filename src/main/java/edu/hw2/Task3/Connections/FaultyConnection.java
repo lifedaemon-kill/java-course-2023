@@ -26,8 +26,4 @@ public class FaultyConnection implements Connection {
             LOGGER.info(command);
         }
     }
-
-    @Override
-    public void close() {
-    }
 }
