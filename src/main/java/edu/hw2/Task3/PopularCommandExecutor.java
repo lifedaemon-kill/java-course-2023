@@ -2,8 +2,8 @@ package edu.hw2.Task3;
 
 import edu.hw2.Task3.ConnectionManagers.DefaultConnectionManager;
 import edu.hw2.Task3.ConnectionManagers.FaultyConnectionManager;
+import edu.hw2.Task3.Interfaces.ConnectionManager;
 import edu.hw2.Task3.Utility.ManagersTypes;
-import static edu.hw2.Task3.Interfaces.ConnectionManager;
 import static edu.hw2.Task3.Utility.DROP_CONNECTION;
 import static edu.hw2.Task3.Utility.LOGGER;
 
@@ -20,10 +20,6 @@ public class PopularCommandExecutor {
     public PopularCommandExecutor(ManagersTypes managerType) {
         setAttempts(minAttempts);
         setManager(managerType);
-    }
-
-    public PopularCommandExecutor(int attempts) {
-        this(attempts, ManagersTypes.DEFAULT);
     }
 
     public PopularCommandExecutor() {

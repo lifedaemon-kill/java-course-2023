@@ -2,8 +2,8 @@ package edu.hw2.Task3.ConnectionManagers;
 
 import edu.hw2.Task3.Connections.FaultyConnection;
 import edu.hw2.Task3.Connections.StableConnection;
-import static edu.hw2.Task3.Interfaces.Connection;
-import static edu.hw2.Task3.Interfaces.ConnectionManager;
+import edu.hw2.Task3.Interfaces.ConnectionManager;
+import edu.hw2.Task3.Interfaces.Connection;
 import static edu.hw2.Task3.Utility.DROP_RATE;
 
 public class DefaultConnectionManager implements ConnectionManager {

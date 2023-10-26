@@ -1,11 +1,11 @@
 package edu.hw2.Task3.Connections;
 
 import edu.hw2.Task3.ConnectionException;
-import edu.hw2.Task3.Interfaces;
+import edu.hw2.Task3.Interfaces.Connection;
 import static edu.hw2.Task3.Utility.DROP_RATE;
 import static edu.hw2.Task3.Utility.LOGGER;
 
-public class FaultyConnection implements Interfaces.Connection {
+public class FaultyConnection implements Connection {
     private static int connectionIterator = -1;
     private int connectionDropRate = DROP_RATE;
 
