@@ -1,8 +1,7 @@
-package edu.hw2;
+package edu.hw2.Task4;
 
-final class Task4WhoCalls {
-    private Task4WhoCalls() {
-    }
+
+public record CallingInfo(String className, String methodName) {
 
     public static CallingInfo callingInfo() {
         StackTraceElement[] stackTrace = new Throwable().getStackTrace();
@@ -13,9 +12,4 @@ final class Task4WhoCalls {
 
         return new CallingInfo(className, methodName);
     }
-
-    public record CallingInfo(String className, String methodName) {
-    }
-
 }
-
