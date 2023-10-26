@@ -22,7 +22,7 @@ public class Utility {
     public static final String WAY_STRING = " ◈ ";
     public static final String DEATH_STRING = " ☠ ";
 
-    public static final int DEFAULT_MAZE_SIZE = 15;
+    public static final int DEFAULT_MAZE_SIZE = 30;
 
     public static final String NO_SUCH_TYPE_ERROR = "There is no such type, refer to the help";
     public static final String GRID_IS_EMPTY_ERROR = "Grid is empty!";

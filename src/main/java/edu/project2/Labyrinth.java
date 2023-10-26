@@ -62,7 +62,7 @@ public final class Labyrinth {
     }
 
     public void generateLabyrinth() {
-        this.grid = generator.generate(this.height, this.width, this.seed);
+        this.grid = generator.generate(this.width, this.height, this.seed);
     }
 
     private void printGrid(Cell[][] grid) {
