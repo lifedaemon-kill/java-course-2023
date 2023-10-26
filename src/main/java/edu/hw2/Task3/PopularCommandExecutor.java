@@ -2,38 +2,53 @@ package edu.hw2.Task3;
 
 import edu.hw2.Task3.ConnectionManagers.DefaultConnectionManager;
 import edu.hw2.Task3.ConnectionManagers.FaultyConnectionManager;
-import java.util.Locale;
+import edu.hw2.Task3.Utility.ManagersTypes;
+import static edu.hw2.Task3.Interfaces.ConnectionManager;
 import static edu.hw2.Task3.Utility.DROP_CONNECTION;
-import static edu.hw2.Task3.Utility.FAULTY;
+import static edu.hw2.Task3.Utility.LOGGER;
 
 public class PopularCommandExecutor {
-    private static Interfaces.ConnectionManager manager;
-    private final int maxAttempts;
+    private ConnectionManager manager;
     private final int minAttempts = 1;
+    private int maxAttempts;
 
-    public PopularCommandExecutor(int attempts, String managerType) {
-        this.maxAttempts = Math.max(attempts, minAttempts);
-
-        if (managerType.toLowerCase(Locale.ROOT).equals(FAULTY)) {
-            manager = new FaultyConnectionManager();
-        } else {
-            manager = new DefaultConnectionManager();
-        }
+    public PopularCommandExecutor(int attempts, ManagersTypes managerType) {
+        setAttempts(attempts);
+        setManager(managerType);
     }
 
-    public PopularCommandExecutor(String managerType) {
-        this.maxAttempts = minAttempts;
+    public PopularCommandExecutor(ManagersTypes managerType) {
+        setAttempts(minAttempts);
+        setManager(managerType);
+    }
 
-        if (managerType.toLowerCase(Locale.ROOT).equals(FAULTY)) {
-            manager = new FaultyConnectionManager();
-        } else {
-            manager = new DefaultConnectionManager();
-        }
+    public PopularCommandExecutor(int attempts) {
+        this(attempts, ManagersTypes.DEFAULT);
     }
 
     public PopularCommandExecutor() {
-        this.maxAttempts = minAttempts;
-        manager = new DefaultConnectionManager();
+        setAttempts(minAttempts);
+        setManager(ManagersTypes.DEFAULT);
+    }
+
+    public void setManager(ManagersTypes managerType) {
+        if (managerType == ManagersTypes.FAULTY) {
+            this.manager = new FaultyConnectionManager();
+        } else if (managerType == ManagersTypes.DEFAULT) {
+            this.manager = new DefaultConnectionManager();
+        } else {
+            LOGGER.warn("There aren't that manager! Set to default: " + ManagersTypes.DEFAULT.name());
+            this.manager = new DefaultConnectionManager();
+        }
+    }
+
+    public void setAttempts(int attempts) {
+        if (attempts < minAttempts) {
+            LOGGER.warn("Max Attempts is too small! Set to default:" + minAttempts);
+            this.maxAttempts = minAttempts;
+        } else {
+            this.maxAttempts = attempts;
+        }
     }
 
     public void updatePackages() {
