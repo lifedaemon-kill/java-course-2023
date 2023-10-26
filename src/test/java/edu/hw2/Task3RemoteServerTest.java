@@ -1,15 +1,15 @@
 package edu.hw2;
 
-import edu.hw2.Task3RemoteServer.DefaultConnectionManager;
+import edu.hw2.Task3.ConnectionException;
+import edu.hw2.Task3.ConnectionManagers.DefaultConnectionManager;
+import edu.hw2.Task3.ConnectionManagers.FaultyConnectionManager;
+import edu.hw2.Task3.Connections.FaultyConnection;
+import edu.hw2.Task3.Connections.StableConnection;
+import edu.hw2.Task3.PopularCommandExecutor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import static edu.hw2.Task3RemoteServer.ConnectionException;
-import static edu.hw2.Task3RemoteServer.FaultyConnection;
-import static edu.hw2.Task3RemoteServer.FaultyConnectionManager;
-import static edu.hw2.Task3RemoteServer.PopularCommandExecutor;
-import static edu.hw2.Task3RemoteServer.StableConnection;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class Task3RemoteServerTest {
@@ -149,6 +149,7 @@ public class Task3RemoteServerTest {
 
         assertThat(dropCount).isBetween(left, right);
     }
+
     @Test
     @DisplayName("PopularCommandExecutor is Full-Default")
     void test7() {
@@ -170,6 +171,7 @@ public class Task3RemoteServerTest {
 
         assertThat(dropCount).isBetween(left, right);
     }
+
     @Test
     @DisplayName("PopularCommandExecutor is Faulty, Attempts default")
     void test8() {
