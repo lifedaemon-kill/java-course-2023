@@ -5,9 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import static edu.hw3.Task1AtbashCipher.atbash;
-import static edu.hw3.Task1AtbashCipher.isEnglishHigh;
-import static edu.hw3.Task1AtbashCipher.isEnglishLow;
+import static edu.hw3.Task1.AtbashCipher.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class Task1AtbashCipherTest {

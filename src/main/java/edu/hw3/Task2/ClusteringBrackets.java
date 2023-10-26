@@ -1,9 +1,9 @@
-package edu.hw3;
+package edu.hw3.Task2;
 
 import java.util.ArrayList;
 
-final class Task2ClusteringBrackets {
-    private Task2ClusteringBrackets() {
+public final class ClusteringBrackets {
+    private ClusteringBrackets() {
     }
 
     public static ArrayList<String> clusterize(String line) {

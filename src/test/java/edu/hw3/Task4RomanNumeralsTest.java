@@ -3,7 +3,7 @@ package edu.hw3;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static edu.hw3.Task4RomanNumerals.*;
+import static edu.hw3.Task4.RomanNumerals.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class Task4RomanNumeralsTest {

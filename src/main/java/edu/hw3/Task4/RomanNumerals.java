@@ -1,9 +1,9 @@
-package edu.hw3;
+package edu.hw3.Task4;
 
 import java.util.HashMap;
 
-final class Task4RomanNumerals {
-    private Task4RomanNumerals() {
+public final class RomanNumerals {
+    private RomanNumerals() {
     }
 
     //if last base star with "1" it should be 4, if with 5 then require different formula

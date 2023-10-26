@@ -1,12 +1,11 @@
 package edu.hw3;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import static edu.hw3.Task2ClusteringBrackets.*;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import static edu.hw3.Task2.ClusteringBrackets.clusterize;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class Task2ClusteringBracketsTest {
@@ -30,6 +29,7 @@ public class Task2ClusteringBracketsTest {
         var answerArray = clusterize(request);
         assertThat(answerArray).isEqualTo(expected);
     }
+
     @Test
     @DisplayName("3 Тест с курса")
     void test3() {
@@ -39,6 +39,7 @@ public class Task2ClusteringBracketsTest {
         var answerArray = clusterize(request);
         assertThat(answerArray).isEqualTo(expected);
     }
+
     @Test
     @DisplayName("4 Тест с курса")
     void test4() {
@@ -48,6 +49,7 @@ public class Task2ClusteringBracketsTest {
         var answerArray = clusterize(request);
         assertThat(answerArray).isEqualTo(expected);
     }
+
     @Test
     @DisplayName("Скобки без пар")
     void test5() {
@@ -57,6 +59,7 @@ public class Task2ClusteringBracketsTest {
         var answerArray = clusterize(request);
         assertThat(answerArray).isEqualTo(expected);
     }
+
     @Test
     @DisplayName("Только открытые скобки")
     void test6() {
@@ -66,6 +69,7 @@ public class Task2ClusteringBracketsTest {
         var answerArray = clusterize(request);
         assertThat(answerArray).isEqualTo(expected);
     }
+
     @Test
     @DisplayName("Лишние символы в строке")
     void test7() {

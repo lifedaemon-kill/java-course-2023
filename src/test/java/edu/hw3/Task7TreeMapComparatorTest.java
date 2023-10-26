@@ -1,9 +1,10 @@
 package edu.hw3;
 
 import java.util.TreeMap;
+import edu.hw3.Task7.NullKeyComparator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import static edu.hw3.Task7TreeMapComparator.NullKeyComparator;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class Task7TreeMapComparatorTest {

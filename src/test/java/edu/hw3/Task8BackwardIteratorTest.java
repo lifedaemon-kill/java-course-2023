@@ -1,6 +1,6 @@
 package edu.hw3;
 
-import edu.hw3.Task8BackwardIterator.BackwardIterator;
+import edu.hw3.Task8.BackwardIterator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

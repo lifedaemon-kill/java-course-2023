@@ -1,7 +1,7 @@
-package edu.hw3;
+package edu.hw3.Task1;
 
-final class Task1AtbashCipher {
-    private Task1AtbashCipher() {
+public final class AtbashCipher {
+    private AtbashCipher() {
     }
 
     public static boolean isEnglishLow(Character letter) {

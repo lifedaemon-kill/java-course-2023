@@ -3,7 +3,7 @@ package edu.hw3;
 import java.util.HashMap;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import static edu.hw3.Task3ElementFrequency.freqDict;
+import static edu.hw3.Task3.ElementFrequency.freqDict;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class Task3ElementFrequencyTest {
@@ -27,15 +27,16 @@ public class Task3ElementFrequencyTest {
         Object[] request = {"this", "and", "that", "and"};
 
         HashMap<Object, Integer> expected = new HashMap<>() {{
-                put("that", 1);
-                put("and", 2);
-                put("this", 1);
+            put("that", 1);
+            put("and", 2);
+            put("this", 1);
         }};
 
         HashMap<Object, Integer> answerArray = freqDict(request);
 
         assertThat(answerArray).isEqualTo(expected);
     }
+
     @Test
     @DisplayName("3 Тест с курса")
     void test3() {
@@ -50,6 +51,7 @@ public class Task3ElementFrequencyTest {
 
         assertThat(answerArray).isEqualTo(expected);
     }
+
     @Test
     @DisplayName("4 Тест с курса")
     void test4() {

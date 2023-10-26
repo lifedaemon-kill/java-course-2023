@@ -1,9 +1,9 @@
 package edu.hw3;
 
+import edu.hw3.Task5.Person;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import static edu.hw3.Task5ContactList.Person;
-import static edu.hw3.Task5ContactList.parseContacts;
+import static edu.hw3.Task5.ParseContactList.parseContacts;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 

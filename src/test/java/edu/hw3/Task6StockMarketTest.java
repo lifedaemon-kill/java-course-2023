@@ -1,9 +1,9 @@
 package edu.hw3;
 
-import edu.hw3.Task6StockMarket.Market;
+import edu.hw3.Task6.Market;
+import edu.hw3.Task6.Stock;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import static edu.hw3.Task6StockMarket.Stock;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class Task6StockMarketTest {
