@@ -79,8 +79,7 @@ public class PopularCommandExecutor {
                     if (iterator >= maxAttempts) {
                         LOGGER.error(DROP_CONNECTION);
                         throw new ConnectionException(DROP_CONNECTION, e);
-                    }
-                    else {
+                    } else {
                         LOGGER.warn(CONNECTION_LOST);
                     }
                 } catch (Exception ex) {
