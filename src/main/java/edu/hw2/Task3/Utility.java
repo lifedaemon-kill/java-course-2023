@@ -9,6 +9,7 @@ public class Utility {
 
     public static final Logger LOGGER = LogManager.getLogger();
     public static final String DROP_CONNECTION = "Can't create connection";
+    public static final String CONNECTION_LOST = "Connection lost, trying to reconnect";
     public static final int DROP_RATE = 3;
 
     public enum ManagersTypes { FAULTY, DEFAULT }

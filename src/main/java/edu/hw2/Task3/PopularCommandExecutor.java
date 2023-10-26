@@ -4,6 +4,7 @@ import edu.hw2.Task3.ConnectionManagers.DefaultConnectionManager;
 import edu.hw2.Task3.ConnectionManagers.FaultyConnectionManager;
 import edu.hw2.Task3.Interfaces.ConnectionManager;
 import edu.hw2.Task3.Utility.ManagersTypes;
+import static edu.hw2.Task3.Utility.CONNECTION_LOST;
 import static edu.hw2.Task3.Utility.DROP_CONNECTION;
 import static edu.hw2.Task3.Utility.LOGGER;
 
@@ -62,8 +63,10 @@ public class PopularCommandExecutor {
             managerExecutor.close();
         } catch (ConnectionException e) {
             if (maxAttempts == 1) {
+                LOGGER.error(DROP_CONNECTION);
                 throw new ConnectionException(DROP_CONNECTION, e);
             }
+            LOGGER.warn(CONNECTION_LOST);
             int iterator = 1;
             while (iterator < maxAttempts) {
                 try {
@@ -74,7 +77,11 @@ public class PopularCommandExecutor {
                 } catch (ConnectionException ex) {
                     iterator++;
                     if (iterator >= maxAttempts) {
+                        LOGGER.error(DROP_CONNECTION);
                         throw new ConnectionException(DROP_CONNECTION, e);
+                    }
+                    else {
+                        LOGGER.warn(CONNECTION_LOST);
                     }
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
