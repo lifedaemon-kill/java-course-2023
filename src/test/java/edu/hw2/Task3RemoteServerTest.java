@@ -6,6 +6,7 @@ import edu.hw2.Task3.ConnectionManagers.FaultyConnectionManager;
 import edu.hw2.Task3.Connections.FaultyConnection;
 import edu.hw2.Task3.Connections.StableConnection;
 import edu.hw2.Task3.PopularCommandExecutor;
+import edu.hw2.Task3.Utility;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.DisplayName;
@@ -115,7 +116,7 @@ public class Task3RemoteServerTest {
         int dropCount = 0;
         int maxTries = 15;
 
-        PopularCommandExecutor executor = new PopularCommandExecutor(4, "Default");
+        PopularCommandExecutor executor = new PopularCommandExecutor(4, Utility.ManagersTypes.DEFAULT);
 
         for (int i = 0; i < maxTries; i++) {
             try {
@@ -134,7 +135,7 @@ public class Task3RemoteServerTest {
         int dropCount = 0;
         int maxTries = 50;
 
-        PopularCommandExecutor executor = new PopularCommandExecutor(1, "Default");
+        PopularCommandExecutor executor = new PopularCommandExecutor(1, Utility.ManagersTypes.DEFAULT);
 
         for (int i = 0; i < maxTries; i++) {
             try {
@@ -178,7 +179,7 @@ public class Task3RemoteServerTest {
         int dropCount = 0;
         int maxTries = 50;
 
-        PopularCommandExecutor executor = new PopularCommandExecutor("Faulty");
+        PopularCommandExecutor executor = new PopularCommandExecutor(Utility.ManagersTypes.FAULTY);
 
         for (int i = 0; i < maxTries; i++) {
             try {
