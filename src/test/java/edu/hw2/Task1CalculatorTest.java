@@ -2,7 +2,11 @@ package edu.hw2;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import static edu.hw2.Task1Calculator.Expr.*;
+import static edu.hw2.Task1.Calculator.Expr.Addition;
+import static edu.hw2.Task1.Calculator.Expr.Constant;
+import static edu.hw2.Task1.Calculator.Expr.Exponent;
+import static edu.hw2.Task1.Calculator.Expr.Multiplication;
+import static edu.hw2.Task1.Calculator.Expr.Negate;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class Task1CalculatorTest {
