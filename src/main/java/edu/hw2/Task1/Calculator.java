@@ -1,7 +1,7 @@
-package edu.hw2;
+package edu.hw2.Task1;
 
-final class Task1Calculator {
-    private Task1Calculator() {
+public final class Calculator {
+    private Calculator() {
     }
 
     public sealed interface Expr {
