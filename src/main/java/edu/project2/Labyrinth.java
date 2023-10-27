@@ -89,18 +89,21 @@ public final class Labyrinth {
         printGrid(this.grid);
     }
 
-    public void printWithSolving() throws Exception {
+    public void printWithSolving(int[] start, int[] end) {
         if (grid == null) {
-            throw new Exception(GRID_IS_EMPTY_ERROR);
+            LOGGER.error(GRID_IS_EMPTY_ERROR);
+            return;
         }
         Cell[][] solvedGrid;
         try {
-            solvedGrid = solver.solve(grid);
+            solvedGrid = solver.solve(grid, start, end);
+            printGrid(solvedGrid);
         } catch (Exception e) {
-            throw new Exception("Дaнный солвер не нашел решения эт☠го лабиринта!", e);
+            LOGGER.warn("That s☠lver couldn't solve this maze! So sad");
         }
-
-        printGrid(solvedGrid);
+    }
+    public void printWithSolving() {
+        printWithSolving(new int[]{1, 1}, new int[]{grid.length - 1, grid[0].length - 1});
     }
 
     public void help() {
