@@ -1,13 +1,14 @@
 package edu.hw3.Task2;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public final class ClusteringBrackets {
     private ClusteringBrackets() {
     }
 
-    public static ArrayList<String> clusterize(String line) {
-        ArrayList<String> result = new ArrayList<>();
+    public static List<String> clusterize(String line) {
+        List<String> result = new ArrayList<>();
         StringBuilder cluster = new StringBuilder();
 
         int left = 0;
