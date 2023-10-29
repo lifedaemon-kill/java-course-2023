@@ -11,72 +11,86 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class Task2ClusteringBracketsTest {
 
     @Test
-    @DisplayName("1 Тест с курса")
+    @DisplayName("Paired brackets")
     void test1() {
+        // Arrange
         String request = "()()()";
         ArrayList<String> expected = new ArrayList<>(Arrays.asList("()", "()", "()"));
-
+        // Act
         var answerArray = clusterize(request);
+        // Assert
         assertThat(answerArray).isEqualTo(expected);
     }
 
     @Test
-    @DisplayName("2 Тест с курса")
+    @DisplayName("Two times nested pairs of brackets")
     void test2() {
+        // Arrange
         String request = "((()))";
         ArrayList<String> expected = new ArrayList<>(List.of("((()))"));
-
+        // Act
         var answerArray = clusterize(request);
+        // Assert
         assertThat(answerArray).isEqualTo(expected);
     }
 
     @Test
-    @DisplayName("3 Тест с курса")
+    @DisplayName("Several in a row of nested brackets")
     void test3() {
+        // Arrange
         String request = "((()))(())()()(()())";
         ArrayList<String> expected = new ArrayList<>(Arrays.asList("((()))", "(())", "()", "()", "(()())"));
-
+        // Act
         var answerArray = clusterize(request);
+        // Assert
         assertThat(answerArray).isEqualTo(expected);
     }
 
     @Test
-    @DisplayName("4 Тест с курса")
+    @DisplayName("Pair of nested parentheses in one nesting")
     void test4() {
+        // Arrange
         String request = "((())())(()(()()))";
         ArrayList<String> expected = new ArrayList<>(Arrays.asList("((())())", "(()(()()))"));
-
+        // Act
         var answerArray = clusterize(request);
+        // Assert
         assertThat(answerArray).isEqualTo(expected);
     }
 
     @Test
     @DisplayName("Скобки без пар")
     void test5() {
+        // Arrange
         String request = ")()()(";
         ArrayList<String> expected = new ArrayList<>(Arrays.asList("()", "()"));
-
+        // Act
         var answerArray = clusterize(request);
+        // Assert
         assertThat(answerArray).isEqualTo(expected);
     }
 
     @Test
     @DisplayName("Только открытые скобки")
     void test6() {
+        // Arrange
         String request = "(((()";
         ArrayList<String> expected = new ArrayList<>(List.of());
-
+        // Act
         var answerArray = clusterize(request);
+        // Assert
         assertThat(answerArray).isEqualTo(expected);
     }
 
     @Test
     @DisplayName("Лишние символы в строке")
     void test7() {
+        // Arrange
         String request = "((Tinkoff)(Course)(2023))";
         ArrayList<String> expected = new ArrayList<>(List.of("(()()())"));
-
+        // Act
         var answerArray = clusterize(request);
+        // Assert
         assertThat(answerArray).isEqualTo(expected);
     }
 }
