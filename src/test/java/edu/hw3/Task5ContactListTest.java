@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class Task5ContactListTest {
     @Test
-    @DisplayName("1 Тест с курсa")
+    @DisplayName("Корректные имена, сортировка по возрастанию")
     void test1() throws Exception {
         String[] names = {"John Locke", "Thomas Aquinas", "David Hume", "Rene Descartes"};
         Person[] expected = {
@@ -23,7 +23,7 @@ public class Task5ContactListTest {
     }
 
     @Test
-    @DisplayName("1 Тест с курсa, обратный ход")
+    @DisplayName("Корректные имена, сортировка по убыванию")
     void test2() throws Exception {
         String[] arrayNames = {"John Locke", "Thomas Aquinas", "David Hume", "Rene Descartes"};
         Person[] expectedNames = {
@@ -39,7 +39,7 @@ public class Task5ContactListTest {
     }
 
     @Test
-    @DisplayName("2 Тест с курсa")
+    @DisplayName("Корректные имена, второй пример, сортировка по убыванию")
     void test3() throws Exception {
         String[] arrayNames = {"Paul Erdos", "Leonhard Euler", "Carl Gauss"};
         Person[] expectedNames = {
@@ -53,7 +53,7 @@ public class Task5ContactListTest {
     }
 
     @Test
-    @DisplayName("3 Тест с курсa")
+    @DisplayName("Пустой список")
     void test4() throws Exception {
         String[] arrayNames = {};
         Person[] expectedNames = {};
@@ -63,7 +63,7 @@ public class Task5ContactListTest {
     }
 
     @Test
-    @DisplayName("4 Тест с курсa")
+    @DisplayName("Вместо списка имен null")
     void test5() throws Exception {
         Person[] expectedNames = {};
 
@@ -72,7 +72,7 @@ public class Task5ContactListTest {
     }
 
     @Test
-    @DisplayName("У части нет фамилий")
+    @DisplayName("У части людей нет фамилий")
     void test6() throws Exception {
         String[] arrayNames = {"John", "Janette", "Linus Jackovich", "Wolf Jsonov"};
         Person[] expectedNames = {
@@ -102,30 +102,70 @@ public class Task5ContactListTest {
     }
 
     @Test
-    @DisplayName("Функции")
-    void test8() throws Exception {
+    @DisplayName("isEquals возвращает true если элементы равны")
+    void testEqualsTrue() throws Exception {
         Person person1 = new Person("Java Dusk");
         Person person2 = new Person("Java Dusk");
 
         boolean equals = person1.equals(person2);
+
         assertThat(equals).isTrue();
+    }
+
+    @Test
+    @DisplayName("isEquals возвращает false если элементы не равны")
+    void testEqualsFalse() throws Exception {
+        Person person1 = new Person("Java Dusk");
+        Person person2 = new Person("Dusk Java");
+
+        boolean equals = person1.equals(person2);
+
+        assertThat(equals).isFalse();
+    }
+
+    @Test
+    @DisplayName("compareTo возвращает 0 если экземпляры равны")
+    void testCompareToZero() throws Exception {
+        Person person1 = new Person("Java Dusk");
+        Person person2 = new Person("Java Dusk");
 
         int compare = person1.compareTo(person2);
+
         assertThat(compare).isZero();
+    }
 
-        person1 = new Person("a b");
-        person2 = new Person("a c");
-        compare = person1.compareTo(person2);
+    @Test
+    @DisplayName("compareTo return negative if first less then second")
+    void testCompareToNegative() throws Exception {
+        Person person1 = new Person("a b");
+        Person person2 = new Person("a c");
+
+        int compare = person1.compareTo(person2);
+
         assertThat(compare).isNegative();
+    }
 
-        person1 = new Person("a d");
-        person2 = new Person("c a");
-        compare = person1.compareTo(person2);
-        assertThat(compare).isPositive();
+    @Test
+    @DisplayName("compareTo return positive if first greater then second")
+    void testCompareToPositive() throws Exception {
+        Person person1 = new Person("a d");
+        Person person2 = new Person("c a");
 
-        person1 = new Person("b ");
-        person2 = new Person("c a");
-        compare = person1.compareTo(person2);
+        int compare = person1.compareTo(person2);
+
         assertThat(compare).isPositive();
     }
+
+    @Test
+    @DisplayName("compareTo return positive if first greater then second but first have only 1 word")
+    void testCompareToPositiveHalfWord() throws Exception {
+        Person person1 = new Person("b ");
+        Person person2 = new Person("c a");
+
+        int compare = person1.compareTo(person2);
+
+        assertThat(compare).isPositive();
+    }
+
 }
+
