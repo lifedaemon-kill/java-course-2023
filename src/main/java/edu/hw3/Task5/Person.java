@@ -7,12 +7,12 @@ public final class Person {
     public Person(String fullName) throws Exception {
         String[] splitName = fullName.split(" ");
 
-        switch (splitName.length){
+        switch (splitName.length) {
             case 2:
                 this.lastName = splitName[1];
             case 1:
                 this.firstName = splitName[0];
-                    break;
+                break;
             default:
                 throw new Exception("Name \"" + fullName + "\" is wrong");
         }
@@ -20,19 +20,15 @@ public final class Person {
 
     @Override
     public String toString() {
-        if (lastName != null) {
-            return firstName + " " + lastName;
-        } else {
-            return firstName;
-        }
+        return toString(false);
     }
 
-    private String toReverseString() {
-        if (lastName != null) {
-            return lastName + firstName;
-        } else {
-            return firstName;
-        }
+    public String toReverseString() {
+        return toString(true);
+    }
+
+    private String toString(boolean reverse) {
+        return (lastName == null) ? firstName : (reverse) ? lastName + " " + firstName : firstName + " " + lastName;
     }
 
     public int compareTo(Person anotherPerson) {
