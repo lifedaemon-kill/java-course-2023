@@ -10,8 +10,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class Task7TreeMapComparatorTest {
 
     @Test
-    @DisplayName("1 Тест с курса")
+    @DisplayName("null can be key for tree")
     void test1() {
+        // Arrange
         TreeMap<String, String> tree = new TreeMap<>(new NullKeyComparator());
 
         tree.put(null, "test");
@@ -19,12 +20,16 @@ public class Task7TreeMapComparatorTest {
         tree.put("ac", "678");
         tree.put("ab", "345");
 
-        assertThat(tree.containsKey(null)).isTrue();
+        // Act
+        boolean result = tree.containsKey(null);
+        // Assert
+        assertThat(result).isTrue();
     }
 
     @Test
-    @DisplayName("null key is the highest")
+    @DisplayName("null key is the highest in treemap")
     void test2() {
+        // Arrange
         TreeMap<String, String> tree = new TreeMap<>(new NullKeyComparator());
 
         tree.put("aa", "123");
@@ -32,6 +37,10 @@ public class Task7TreeMapComparatorTest {
         tree.put(null, "test");
         tree.put("ab", "345");
 
-        assertThat(tree.toString()).isEqualTo("{null=test, aa=123, ab=345, ac=678}");
+        // Act
+        String result = tree.toString();
+
+        // Assert
+        assertThat(result).isEqualTo("{null=test, aa=123, ab=345, ac=678}");
     }
 }
