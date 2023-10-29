@@ -8,21 +8,24 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class Task4RomanNumeralsTest {
     @Test
-    @DisplayName("1 Тест с курсa")
+    @DisplayName("2")
     void test1() throws Exception {
+        // Arrange
         int arabic = 2;
+        // Act
         String roman = convertToRoman(arabic);
+        // Assert
         assertThat(roman).isEqualTo("II");
     }
     @Test
-    @DisplayName("2 Тест с курсa")
+    @DisplayName("12")
     void test2() throws Exception {
         int arabic = 12;
         String roman = convertToRoman(arabic);
         assertThat(roman).isEqualTo("XII");
     }
     @Test
-    @DisplayName("3 Тест с курсa")
+    @DisplayName("16")
     void test3() throws Exception {
         int arabic = 16;
         String roman = convertToRoman(arabic);
