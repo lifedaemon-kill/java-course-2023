@@ -6,12 +6,15 @@ public final class Person {
 
     public Person(String fullName) throws Exception {
         String[] splitName = fullName.split(" ");
-        if (splitName.length != 1 && splitName.length != 2) {
-            throw new Exception("Name \"" + fullName + "\" is wrong");
-        }
-        this.firstName = splitName[0];
-        if (splitName.length == 2) {
-            this.lastName = splitName[1];
+
+        switch (splitName.length){
+            case 2:
+                this.lastName = splitName[1];
+            case 1:
+                this.firstName = splitName[0];
+                    break;
+            default:
+                throw new Exception("Name \"" + fullName + "\" is wrong");
         }
     }
 
