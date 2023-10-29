@@ -26,52 +26,75 @@ public class Task6StockMarketTest {
     }
 
     @Test
-    @DisplayName("200 300 400")
+    @DisplayName("max value in the end")
     void test2() {
-        Stock maxStock;
-
+        // Arrange
         Market market = new Market();
-
         market.add(new Stock(0, 200, "Google"));
         market.add(new Stock(1, 300, "Firefox"));
 
-        maxStock = new Stock(2, 400, "Microsoft");
-        market.add(maxStock);
+        Stock expectedMax = new Stock(2, 400, "Microsoft");
+        market.add(expectedMax);
 
-        assertThat(market.mostValuableStock()).isEqualTo(maxStock);
+        // Act
+        Stock maxStock = market.mostValuableStock();
+
+        // Assert
+        assertThat(maxStock).isEqualTo(maxStock);
     }
 
     @Test
-    @DisplayName("400 300 200")
+    @DisplayName("max value is first")
     void test3() {
-        Stock maxStock;
+        // Arrange
+        Stock expectedMax;
         Market market = new Market();
 
-        maxStock = new Stock(0, 400, "Microsoft");
+        expectedMax = new Stock(0, 400, "Microsoft");
 
-        market.add(maxStock);
+        market.add(expectedMax);
         market.add(new Stock(1, 300, "Firefox"));
         market.add(new Stock(2, 200, "Google"));
 
-        assertThat(market.mostValuableStock()).isEqualTo(maxStock);
+        // Act
+        Stock maxStock = market.mostValuableStock();
+
+        // Assert
+        assertThat(maxStock).isEqualTo(expectedMax);
     }
 
     @Test
-    @DisplayName("300 200 -> 200 -> 200 400")
+    @DisplayName("delete max from list and add new greater max")
     void test4() {
-        Stock maxStock;
+        // Arrange
+        Stock expectedMax;
 
         Market market = new Market();
 
-        maxStock = new Stock(0, 400, "Microsoft");
+        expectedMax = new Stock(0, 400, "Microsoft");
 
-        market.add(maxStock);
+        market.add(expectedMax);
         market.add(new Stock(1, 300, "Firefox"));
         market.add(new Stock(2, 200, "Google"));
 
         market.remove(new Stock(1, 300, "Firefox"));
-        market.add(maxStock);
+        market.add(expectedMax);
 
-        assertThat(market.mostValuableStock()).isEqualTo(maxStock);
+        // Act
+        Stock maxStock = market.mostValuableStock();
+
+        // Assert
+        assertThat(maxStock).isEqualTo(expectedMax);
+    }
+
+    @Test
+    @DisplayName("empty list")
+    void test5() {
+        // Arrange
+        Market market = new Market();
+        // Act
+        Stock maxStock = market.mostValuableStock();
+        // Assert
+        assertThat(maxStock).isNull();
     }
 }
