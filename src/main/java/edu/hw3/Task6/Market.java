@@ -23,6 +23,6 @@ public class Market implements StockMarket {
 
     @Override
     public Stock mostValuableStock() {
-        return queue.element();
+        return queue.isEmpty() ? null : queue.element();
     }
 }
