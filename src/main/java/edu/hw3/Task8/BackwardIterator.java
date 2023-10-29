@@ -19,6 +19,6 @@ public class BackwardIterator<T> implements Iterator<T> {
 
     @Override
     public T next() {
-        return (T) collection.toArray()[currentIndex--];
+        return collection.get(currentIndex--);
     }
 }
