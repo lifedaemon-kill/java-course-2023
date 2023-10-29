@@ -8,10 +8,12 @@ public final class Person {
         String[] splitName = fullName.split(" ");
 
         switch (splitName.length) {
-            case 2:
-                this.lastName = splitName[1];
             case 1:
                 this.firstName = splitName[0];
+                break;
+            case 2:
+                this.firstName = splitName[0];
+                this.lastName = splitName[1];
                 break;
             default:
                 throw new Exception("Name \"" + fullName + "\" is wrong");
