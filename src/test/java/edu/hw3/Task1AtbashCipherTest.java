@@ -11,26 +11,28 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class Task1AtbashCipherTest {
 
     @Test
-    @DisplayName("1 Тест с курса")
+    @DisplayName("Correct string")
     void test1() {
+        // Arrange
         String request = "Hello world!";
         String expected = "Svool dliow!";
-
+        // Act
         String ciphered = atbash(request);
-
+        // Assert
         assertThat(ciphered).isEqualTo(expected);
     }
 
     @Test
-    @DisplayName("2 Тест с курса")
+    @DisplayName("Long string with special symbols")
     void test2() {
+        // Arrange
         String request =
             "Any fool can write code that a computer can understand. Good programmers write code that humans can understand. ― Martin Fowler";
         String expected =
             "Zmb ullo xzm dirgv xlwv gszg z xlnkfgvi xzm fmwvihgzmw. Tllw kiltiznnvih dirgv xlwv gszg sfnzmh xzm fmwvihgzmw. ― Nzigrm Uldovi";
-
+        // Act
         String ciphered = atbash(request);
-
+        // Assert
         assertThat(ciphered).isEqualTo(expected);
     }
 
@@ -63,24 +65,41 @@ public class Task1AtbashCipherTest {
     }
 
     @ParameterizedTest
-    @DisplayName("Is English Low")
+    @DisplayName("Is English Low work right")
     @MethodSource("validLowLetters")
     void test3(Character letter) {
-        assertThat(isEnglishLow(letter)).isTrue();
+        // Arrange
+
+        // Act
+        boolean result = isEnglishLow(letter);
+        // Assert
+        assertThat(result).isTrue();
     }
 
     @ParameterizedTest
-    @DisplayName("Is English High")
+    @DisplayName("Is English High work right")
     @MethodSource("validHighLetters")
     void test4(Character letter) {
-        assertThat(isEnglishHigh(letter)).isTrue();
+        // Arrange
+
+        // Act
+        boolean result = isEnglishHigh(letter);
+        // Assert
+        assertThat(result).isTrue();
     }
 
     @ParameterizedTest
-    @DisplayName("Is invalid letters")
+    @DisplayName("IsEnglish Low and High receive invalid characters")
     @MethodSource("invalidLetters")
     void test5(Character letter) {
-        assertThat(isEnglishHigh(letter)).isFalse();
-        assertThat(isEnglishLow(letter)).isFalse();
+        // Arrange
+
+        // Act
+        boolean resultHigh = isEnglishHigh(letter);
+        boolean resultLow = isEnglishLow(letter);
+
+        // Assert
+        assertThat(resultHigh).isFalse();
+        assertThat(resultLow).isFalse();
     }
 }
