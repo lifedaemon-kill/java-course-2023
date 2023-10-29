@@ -2,7 +2,7 @@ package edu.hw3.Task5;
 
 public final class Person {
     private final String firstName;
-    private String lastName = null;
+    private String lastName;
 
     public Person(String fullName) throws Exception {
         String[] splitName = fullName.split(" ");
