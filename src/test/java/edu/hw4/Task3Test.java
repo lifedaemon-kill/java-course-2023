@@ -1,11 +1,11 @@
 package edu.hw4;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class Task3Test {
@@ -14,10 +14,10 @@ public class Task3Test {
     void test1() {
         // Arrange
         List<Animal> animals = new ArrayList<>();
-        animals.add(new Animal("Мистер кот", Animal.Type.CAT,     Animal.Sex.M, 5,     24,   3, true));
-        animals.add(new Animal("Джон", Animal.Type.DOG,           Animal.Sex.M, 5,     40,   15, true));
-        animals.add(new Animal("Королева рыб", Animal.Type.DOG,  Animal.Sex.F, 3,     10,   5, false));
-        animals.add(new Animal("Птица феникс", Animal.Type.BIRD,  Animal.Sex.F, 10000, 1500, 700, false));
+        animals.add(new Animal("Мистер кот", Animal.Type.CAT, Animal.Sex.M, 5, 24, 3, true));
+        animals.add(new Animal("Джон", Animal.Type.DOG, Animal.Sex.M, 5, 40, 15, true));
+        animals.add(new Animal("Королева рыб", Animal.Type.DOG, Animal.Sex.F, 3, 10, 5, false));
+        animals.add(new Animal("Птица феникс", Animal.Type.BIRD, Animal.Sex.F, 10000, 1500, 700, false));
 
         Map<Animal.Type, Integer> expected = new HashMap<>();
         expected.put(Animal.Type.CAT, 1);
@@ -30,15 +30,16 @@ public class Task3Test {
         //Assert
         assertThat(result).isEqualTo(expected);
     }
+
     @Test
     @DisplayName("Ни один тип не повторяется")
     void test2() {
         // Arrange
         List<Animal> animals = new ArrayList<>();
-        animals.add(new Animal("Мистер кот", Animal.Type.CAT,     Animal.Sex.M, 5,     24,   3, true));
-        animals.add(new Animal("Джон", Animal.Type.DOG,           Animal.Sex.M, 5,     40,   15, true));
-        animals.add(new Animal("Королева рыб", Animal.Type.FISH,  Animal.Sex.F, 3,     10,   5, false));
-        animals.add(new Animal("Птица феникс", Animal.Type.BIRD,  Animal.Sex.F, 10000, 1500, 700, false));
+        animals.add(new Animal("Мистер кот", Animal.Type.CAT, Animal.Sex.M, 5, 24, 3, true));
+        animals.add(new Animal("Джон", Animal.Type.DOG, Animal.Sex.M, 5, 40, 15, true));
+        animals.add(new Animal("Королева рыб", Animal.Type.FISH, Animal.Sex.F, 3, 10, 5, false));
+        animals.add(new Animal("Птица феникс", Animal.Type.BIRD, Animal.Sex.F, 10000, 1500, 700, false));
 
         Map<Animal.Type, Integer> expected = new HashMap<>();
         expected.put(Animal.Type.CAT, 1);
@@ -51,15 +52,16 @@ public class Task3Test {
         //Assert
         assertThat(result).isEqualTo(expected);
     }
+
     @Test
     @DisplayName("Несколько типов повторяется несколько раз")
     void test3() {
         // Arrange
         List<Animal> animals = new ArrayList<>();
-        animals.add(new Animal("Мистер кот", Animal.Type.CAT,     Animal.Sex.M, 5,     24,   3, true));
-        animals.add(new Animal("Джон", Animal.Type.DOG,           Animal.Sex.M, 5,     40,   15, true));
-        animals.add(new Animal("Королева рыб", Animal.Type.DOG,  Animal.Sex.F, 3,     10,   5, false));
-        animals.add(new Animal("Птица феникс", Animal.Type.CAT,  Animal.Sex.F, 10000, 1500, 700, false));
+        animals.add(new Animal("Мистер кот", Animal.Type.CAT, Animal.Sex.M, 5, 24, 3, true));
+        animals.add(new Animal("Джон", Animal.Type.DOG, Animal.Sex.M, 5, 40, 15, true));
+        animals.add(new Animal("Королева рыб", Animal.Type.DOG, Animal.Sex.F, 3, 10, 5, false));
+        animals.add(new Animal("Птица феникс", Animal.Type.CAT, Animal.Sex.F, 10000, 1500, 700, false));
 
         Map<Animal.Type, Integer> expected = new HashMap<>();
         expected.put(Animal.Type.CAT, 2);
@@ -70,6 +72,7 @@ public class Task3Test {
         //Assert
         assertThat(result).isEqualTo(expected);
     }
+
     @Test
     @DisplayName("Пустой массив")
     void test4() {
