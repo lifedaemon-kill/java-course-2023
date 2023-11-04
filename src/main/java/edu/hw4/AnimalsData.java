@@ -207,6 +207,12 @@ public class AnimalsData {
                     if (animal.name() == null || animal.name().isEmpty()) {
                         errors.add(ValidationError.NAME_EMPTY);
                     }
+                    if (animal.type() == null) {
+                        errors.add(ValidationError.INVALID_TYPE);
+                    }
+                    if (animal.sex() == null) {
+                        errors.add(ValidationError.INVALID_SEX);
+                    }
                     if (animal.age() <= 0) {
                         errors.add(ValidationError.INVALID_AGE);
                     }
@@ -216,13 +222,53 @@ public class AnimalsData {
                     if (animal.weight() <= 0) {
                         errors.add(ValidationError.INVALID_WEIGHT);
                     }
+
+                    return errors;
+                }
+            ));
+    }
+
+    // Задание 20 Сделать результат предыдущего задания более читабельным:
+    // вернуть имя и названия полей с ошибками, объединенные в строку -> Map<String, String>
+    public static Map<String, String> getMapValidationErrorsString(List<Animal> animals){
+        return animals.stream()
+            .filter(animal -> animal.name() == null || animal.name().isEmpty()
+                              || animal.age() <= 0 || animal.height() <= 0 || animal.weight() <= 0
+                              || animal.type() == null || animal.sex() == null)
+            .collect(Collectors.toMap(
+                Animal::name,
+                animal -> {
+                    StringBuilder errors = new StringBuilder();
+
+                    if (animal.name() == null || animal.name().isEmpty()) {
+                        errors.append(ValidationError.NAME_EMPTY);
+                        errors.append("__");
+                    }
                     if (animal.type() == null) {
-                        errors.add(ValidationError.INVALID_TYPE);
+                        errors.append(ValidationError.INVALID_TYPE);
+                        errors.append("__");
                     }
                     if (animal.sex() == null) {
-                        errors.add(ValidationError.INVALID_SEX);
+                        errors.append(ValidationError.INVALID_SEX);
+                        errors.append("__");
                     }
-                    return errors;
+                    if (animal.age() <= 0) {
+                        errors.append(ValidationError.INVALID_AGE);
+                        errors.append("__");
+                    }
+                    if (animal.height() <= 0) {
+                        errors.append(ValidationError.INVALID_HEIGHT);
+                        errors.append("__");
+                    }
+                    if (animal.weight() <= 0) {
+                        errors.append(ValidationError.INVALID_WEIGHT);
+                        errors.append("__");
+                    }
+
+                    errors.deleteCharAt(errors.length() - 1);
+                    errors.deleteCharAt(errors.length() - 1);
+
+                    return errors.toString();
                 }
             ));
     }
