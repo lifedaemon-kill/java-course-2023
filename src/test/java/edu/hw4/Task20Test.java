@@ -1,13 +1,11 @@
 package edu.hw4;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class Task20Test {
@@ -40,6 +38,7 @@ public class Task20Test {
         //Assert
         assertThat(result).isEqualTo(expected);
     }
+
     @Test
     @DisplayName("Одно поле с ошибкой (Рост)")
     void test3() {
@@ -61,6 +60,7 @@ public class Task20Test {
         //Assert
         assertThat(result).isEqualTo(expected);
     }
+
     @Test
     @DisplayName("Ошибок нет")
     void test2() {

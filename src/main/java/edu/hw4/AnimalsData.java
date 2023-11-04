@@ -11,6 +11,7 @@ import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import static edu.hw4.Animal.Sex.M;
+import static edu.hw4.Utility.HEIGHT_THRESHOLD;
 
 public class AnimalsData {
     private AnimalsData() {
@@ -106,7 +107,7 @@ public class AnimalsData {
     //Задание 11 Список животных, которые могут укусить (bites == true) и рост которых превышает 100 см -> List<Animal>
     public static List<Animal> getAnimalsCanBitesAndHigherThen100(List<Animal> animals) {
         return animals.stream()
-            .filter(a -> a.bites() && a.height() > 100)
+            .filter(a -> a.bites() && a.height() > HEIGHT_THRESHOLD)
             .collect(Collectors.toList());
     }
 
@@ -230,7 +231,7 @@ public class AnimalsData {
 
     // Задание 20 Сделать результат предыдущего задания более читабельным:
     // вернуть имя и названия полей с ошибками, объединенные в строку -> Map<String, String>
-    public static Map<String, String> getMapValidationErrorsString(List<Animal> animals){
+    public static Map<String, String> getMapValidationErrorsString(List<Animal> animals) {
         return animals.stream()
             .filter(animal -> animal.name() == null || animal.name().isEmpty()
                               || animal.age() <= 0 || animal.height() <= 0 || animal.weight() <= 0
