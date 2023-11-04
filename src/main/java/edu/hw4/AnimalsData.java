@@ -1,10 +1,12 @@
 package edu.hw4;
 
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -189,6 +191,39 @@ public class AnimalsData {
             .max(Comparator.comparingInt(Animal::weight))
             .orElse(null);
     }
+
     //Задание 19 Животные, в записях о которых есть ошибки:
     // вернуть имя и список ошибок -> Map<String, Set<ValidationError>>
+    public static Map<String, Set<ValidationError>> getMapValidationErrors(List<Animal> animals) {
+        return animals.stream()
+            .filter(animal -> animal.name() == null || animal.name().isEmpty()
+                              || animal.age() <= 0 || animal.height() <= 0 || animal.weight() <= 0
+                              || animal.type() == null || animal.sex() == null)
+            .collect(Collectors.toMap(
+                Animal::name,
+                animal -> {
+                    Set<ValidationError> errors = new HashSet<>();
+
+                    if (animal.name() == null || animal.name().isEmpty()) {
+                        errors.add(ValidationError.NAME_EMPTY);
+                    }
+                    if (animal.age() <= 0) {
+                        errors.add(ValidationError.INVALID_AGE);
+                    }
+                    if (animal.height() <= 0) {
+                        errors.add(ValidationError.INVALID_HEIGHT);
+                    }
+                    if (animal.weight() <= 0) {
+                        errors.add(ValidationError.INVALID_WEIGHT);
+                    }
+                    if (animal.type() == null) {
+                        errors.add(ValidationError.INVALID_TYPE);
+                    }
+                    if (animal.sex() == null) {
+                        errors.add(ValidationError.INVALID_SEX);
+                    }
+                    return errors;
+                }
+            ));
+    }
 }
