@@ -4,12 +4,10 @@ import edu.project2.Generators.Kruskal;
 import edu.project2.Interfaces.Generator;
 import edu.project2.Interfaces.Solver;
 import edu.project2.Solvers.RightHand;
-import java.io.IOException;
 import java.util.Arrays;
-import java.util.Objects;
 import static edu.project2.Utility.Cell;
-import static edu.project2.Utility.DEATH_STRING;
 import static edu.project2.Utility.DEFAULT_MAZE_SIZE;
+import static edu.project2.Utility.ERROR_STRING;
 import static edu.project2.Utility.GRID_IS_EMPTY_ERROR;
 import static edu.project2.Utility.GeneratorType;
 import static edu.project2.Utility.LOGGER;
@@ -32,9 +30,10 @@ public final class Labyrinth {
     Labyrinth() {
     }
 
-    public void setWidthHeightSeed(int width, int height, int seed) throws IOException {
+    public void setWidthHeightSeed(int height, int width, int seed) {
         if ((width < 1) || (height < 1)) {
-            throw new IOException("Incorrect parameters");
+            LOGGER.error("Incorrect parameters");
+            return;
         }
         this.height = height;
         this.width = width;
@@ -45,27 +44,27 @@ public final class Labyrinth {
         this.grid = grid;
     }
 
-    public void setGenerator(GeneratorType type) throws IOException {
-        if (Objects.requireNonNull(type) == GeneratorType.Kruskal) {
+    public void setGenerator(GeneratorType type) {
+        if (type == GeneratorType.Kruskal) {
             this.generator = new Kruskal();
         } else {
-            throw new IOException(NO_SUCH_TYPE_ERROR);
+            LOGGER.error(NO_SUCH_TYPE_ERROR);
         }
     }
 
-    public void setSolver(SolverType type) throws IOException {
-        if (Objects.requireNonNull(type) == SolverType.RightHand) {
+    public void setSolver(SolverType type) {
+        if (type == SolverType.RightHand) {
             this.solver = new RightHand();
         } else {
-            throw new IOException(NO_SUCH_TYPE_ERROR);
+            LOGGER.error(NO_SUCH_TYPE_ERROR);
         }
     }
 
     public void generateLabyrinth() {
-        this.grid = generator.generate(this.width, this.height, this.seed);
+        this.grid = generator.generate(this.height, this.width, this.seed);
     }
 
-    private void printGrid(Cell[][] grid) {
+    public static void printGrid(Cell[][] grid) {
         StringBuilder array = new StringBuilder();
 
         for (Cell[] cells : grid) {
@@ -74,7 +73,7 @@ public final class Labyrinth {
                     case WAY -> array.append(WAY_STRING);
                     case WALL -> array.append(WALL_STRING);
                     case PASSAGE -> array.append(PASSAGE_STRING);
-                    default -> array.append(DEATH_STRING);
+                    case null, default -> array.append(ERROR_STRING);
                 }
             }
             array.append("\n");
@@ -82,9 +81,10 @@ public final class Labyrinth {
         LOGGER.info("\n" + array);
     }
 
-    public void print() throws Exception {
+    public void print() {
         if (grid == null) {
-            throw new Exception(GRID_IS_EMPTY_ERROR);
+            LOGGER.error(GRID_IS_EMPTY_ERROR);
+            return;
         }
         printGrid(this.grid);
     }
@@ -102,8 +102,9 @@ public final class Labyrinth {
             LOGGER.warn("That s☠lver couldn't solve this maze! So sad");
         }
     }
+
     public void printWithSolving() {
-        printWithSolving(new int[]{1, 1}, new int[]{grid.length - 1, grid[0].length - 1});
+        printWithSolving(new int[] {1, 1}, new int[] {grid.length - 1, grid[0].length - 1});
     }
 
     public void help() {
@@ -122,5 +123,4 @@ public final class Labyrinth {
 
         );
     }
-
 }

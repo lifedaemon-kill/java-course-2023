@@ -9,7 +9,7 @@ public class RightHand implements Solver {
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[0].length; j++) {
                 if (grid[i][j] == Cell.PASSAGE) {
-                    grid[i][j] = Cell.DEATH;
+                    grid[i][j] = null;
                 }
             }
         }

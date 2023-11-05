@@ -1,6 +1,5 @@
 package edu.project2;
 
-import java.io.IOException;
 import static edu.project2.Utility.GeneratorType;
 import static edu.project2.Utility.LOGGER;
 import static edu.project2.Utility.SolverType;
@@ -38,56 +37,43 @@ public class Main {
             switch (choice) {
                 case "exit", "0":
                     return;
+
                 case "help":
                     maze.help();
                     break;
+
                 case "1":
                     maze.generateLabyrinth();
                     break;
+
                 case "2":
-                    try {
-                        maze.print();
-                    } catch (Exception e) {
-                        LOGGER.error(e.getMessage(), e);
-                    }
+                    maze.print();
                     break;
+
                 case "3":
-                    try {
-                        maze.printWithSolving();
-                    } catch (Exception e) {
-                        LOGGER.error(e.getMessage(), e);
-                    }
+                    maze.printWithSolving();
                     break;
+
                 case "4":
                     LOGGER.info("Введите ширину, высоту, семя генерации");
                     width = input.nextInt();
                     heigth = input.nextInt();
                     seed = input.nextInt();
-                    try {
-                        maze.setWidthHeightSeed(width, heigth, seed);
-                    } catch (IOException e) {
-                        LOGGER.error(e.getMessage(), e);
-                    }
+                    maze.setWidthHeightSeed(heigth, width, seed);
                     break;
-                case "5":
-                    try {
-                        generatorType = GeneratorType.valueOf(input.next());
-                        maze.setGenerator(generatorType);
 
-                    } catch (IOException e) {
-                        LOGGER.error(e.getMessage(), e);
-                    }
+                case "5":
+                    generatorType = GeneratorType.valueOf(input.next());
+                    maze.setGenerator(generatorType);
                     break;
+
                 case "6":
-                    try {
-                        solverType = SolverType.valueOf(input.next());
-                        maze.setSolver(solverType);
-                    } catch (IOException e) {
-                        LOGGER.error(e.getMessage(), e);
-                    }
+                    solverType = SolverType.valueOf(input.next());
+                    maze.setSolver(solverType);
                     break;
+
                 default:
-                    LOGGER.warn("Такой команды нет, попробуйте снова");
+                    LOGGER.warn("Такой команды нет, обратитесь к help");
             }
         }
     }
