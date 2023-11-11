@@ -107,7 +107,7 @@ public class AnimalsData {
     //Задание 11 Список животных, которые могут укусить (bites == true) и рост которых превышает 100 см -> List<Animal>
     public static List<Animal> getAnimalsCanBitesAndHigherThen100(List<Animal> animals) {
         return animals.stream()
-            .filter(a -> a.bites() && a.height() > HEIGHT_THRESHOLD)
+            .filter(a -> a.bites() && a.height() > HEIGHT_THRESHOLD.getValue())
             .collect(Collectors.toList());
     }
 

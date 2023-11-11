@@ -23,10 +23,10 @@ public record Animal(
 
     public int paws() {
         return switch (type) {
-            case CAT, DOG -> NUMBER_OF_PAWS_OF_MAMMALS;
-            case BIRD -> NUMBER_OF_PAWS_BIRDS;
+            case CAT, DOG -> NUMBER_OF_PAWS_OF_MAMMALS.getValue();
+            case BIRD -> NUMBER_OF_PAWS_BIRDS.getValue();
             case FISH -> 0;
-            case SPIDER -> NUMBER_OF_PAWS_ARTHROPODS;
+            case SPIDER -> NUMBER_OF_PAWS_ARTHROPODS.getValue();
         };
     }
 }

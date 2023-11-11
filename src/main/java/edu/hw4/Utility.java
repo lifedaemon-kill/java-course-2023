@@ -1,12 +1,18 @@
 package edu.hw4;
 
-public class Utility {
-    private Utility() {
+enum Utility {
+    NUMBER_OF_PAWS_BIRDS(2), //= 2;
+    NUMBER_OF_PAWS_OF_MAMMALS(4), // = 4;
+    NUMBER_OF_PAWS_ARTHROPODS(8), // = 8;
+    HEIGHT_THRESHOLD(100); //= 100;
+
+    private final int value;
+
+    Utility(int value) {
+        this.value = value;
     }
 
-    public static final int NUMBER_OF_PAWS_BIRDS = 2;
-    public static final int NUMBER_OF_PAWS_OF_MAMMALS = 4;
-    public static final int NUMBER_OF_PAWS_ARTHROPODS = 8;
-
-    public static final int HEIGHT_THRESHOLD = 100;
+    public int getValue() {
+        return value;
+    }
 }
