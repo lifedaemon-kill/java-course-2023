@@ -25,10 +25,10 @@ public class ParseDate {
         );
 
         LocalDate result = parser.check(date);
-        if(result == null){
+        if (result == null) {
             return Optional.empty();
-        }
-        else
+        } else {
             return Optional.of(result);
+        }
     }
 }

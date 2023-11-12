@@ -11,6 +11,9 @@ public class AverageTime {
     private AverageTime() {
     }
 
+    final static long MINUTE = 60;
+    final static long HOUR = 3600;
+
     public static String averageTime(List<String> twiceDates) {
         //если строка не валидна, то она не учитывается
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd, HH:mm");
@@ -38,8 +41,8 @@ public class AverageTime {
             .average()
             .orElse(Double.NaN);
 
-        long hour = average / 3600;
-        long min = average / 60 % 60;
+        long hour = average / HOUR;
+        long min = average / MINUTE % MINUTE;
 
         return String.format("%dч %dм", hour, min);
     }

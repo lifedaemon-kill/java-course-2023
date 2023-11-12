@@ -10,11 +10,14 @@ public class Friday13 {
     private Friday13() {
     }
 
+    private static final int COUNT_OF_MONTHS = 12;
+    private static final int SPECIAL_DAY = 13;
+
     public static List<LocalDate> getF13List(int year) {
         List<LocalDate> f13 = new ArrayList<>();
 
-        for (int month = 1; month <= 12; month++) {
-            LocalDate date = LocalDate.of(year, month, 13);
+        for (int month = 1; month <= COUNT_OF_MONTHS; month++) {
+            LocalDate date = LocalDate.of(year, month, SPECIAL_DAY);
             if (date.getDayOfWeek() == DayOfWeek.FRIDAY) {
                 f13.add(date);
             }
@@ -23,11 +26,11 @@ public class Friday13 {
     }
 
     public static LocalDate findNextF13(LocalDate date) {
-        date = date.with(TemporalAdjusters.next(DayOfWeek.FRIDAY));
+        LocalDate next = date.with(TemporalAdjusters.next(DayOfWeek.FRIDAY));
 
-        while (date.getDayOfMonth() != 13) {
-            date = date.with(TemporalAdjusters.next(DayOfWeek.FRIDAY));
+        while (next.getDayOfMonth() != SPECIAL_DAY) {
+            next = next.with(TemporalAdjusters.next(DayOfWeek.FRIDAY));
         }
-        return date;
+        return next;
     }
 }
