@@ -1,4 +1,4 @@
-package edu.hw5;
+package edu.hw5.Task1;
 
 import java.util.ArrayList;
 import java.util.List;
