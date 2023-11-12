@@ -15,16 +15,10 @@ public class Magic {
     }
 
     public static boolean isBeginAndEndIsTheSameSymbol(String number) {
-        Pattern pattern = Pattern.compile("^0[0,1]*0$");
+        Pattern pattern = Pattern.compile("^(0|1)(0|1)*\\1$");
         Matcher matcher = pattern.matcher(number);
-        if (matcher.find()) {
-            return true;
-        } else {
-            pattern = Pattern.compile("^1[0,1]*1$");
-            matcher = pattern.matcher(number);
 
-            return matcher.find();
-        }
+        return matcher.find();
     }
 
     public static boolean isLengthBetween1And3(String number) {
