@@ -1,10 +1,10 @@
 package edu.hw4;
 
 enum Utility {
-    NUMBER_OF_PAWS_BIRDS(2), //= 2;
-    NUMBER_OF_PAWS_OF_MAMMALS(4), // = 4;
-    NUMBER_OF_PAWS_ARTHROPODS(8), // = 8;
-    HEIGHT_THRESHOLD(100); //= 100;
+    NUMBER_OF_PAWS_BIRDS(2),
+    NUMBER_OF_PAWS_OF_MAMMALS(4),
+    NUMBER_OF_PAWS_ARTHROPODS(8),
+    HEIGHT_THRESHOLD(100);
 
     private final int value;
 
