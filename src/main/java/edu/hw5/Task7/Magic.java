@@ -15,7 +15,7 @@ public class Magic {
     }
 
     public static boolean isBeginAndEndIsTheSameSymbol(String number) {
-        Pattern pattern = Pattern.compile("^(0|1)(0|1)*\\1$");
+        Pattern pattern = Pattern.compile("^(0|1)[01]*\\1$");
         Matcher matcher = pattern.matcher(number);
 
         return matcher.find();
