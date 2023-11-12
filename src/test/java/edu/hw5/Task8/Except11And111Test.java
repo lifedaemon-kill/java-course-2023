@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static edu.hw5.Task8Special.RegularExpressions.isExcept11And111;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class Exсept11And111Test {
+public class Except11And111Test {
 
     @Test
     @DisplayName("Корректное значение 1")
@@ -20,6 +20,7 @@ public class Exсept11And111Test {
         boolean result = isExcept11And111("110");
         assertThat(result).isTrue();
     }
+
     @Test
     @DisplayName("Ошибка 11")
     void test3() {
