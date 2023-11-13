@@ -21,7 +21,7 @@ public class AnimalsData {
     public static List<Animal> getSortedAnimalsByHeight(List<Animal> animals) {
         return animals.stream()
             .sorted(Comparator.comparingInt(Animal::height))
-            .collect(Collectors.toList());
+            .toList();
     }
 
     //Задача 2 Отсортировать животных по весу от самого тяжелого к самому легкому, выбрать k первых -> List<Animal>
@@ -29,7 +29,7 @@ public class AnimalsData {
         return animals.stream()
             .sorted(Comparator.comparingInt(Animal::weight).reversed())
             .limit(k)
-            .collect(Collectors.toList());
+            .toList();
     }
 
     //Задача 3 Сколько животных каждого вида -> Map<Animal.Type, Integer>
@@ -101,14 +101,14 @@ public class AnimalsData {
     public static List<Animal> getAnimalsWhereAgeNotEqualsToNumberOfPaws(List<Animal> animals) {
         return animals.stream()
             .filter(a -> a.paws() != a.age())
-            .collect(Collectors.toList());
+            .toList();
     }
 
     //Задание 11 Список животных, которые могут укусить (bites == true) и рост которых превышает 100 см -> List<Animal>
     public static List<Animal> getAnimalsCanBitesAndHigherThen100(List<Animal> animals) {
         return animals.stream()
             .filter(a -> a.bites() && a.height() > HEIGHT_THRESHOLD.getValue())
-            .collect(Collectors.toList());
+            .toList();
     }
 
     //Задание 12 Сколько в списке животных, вес которых превышает рост -> Integer
@@ -122,7 +122,7 @@ public class AnimalsData {
     public static List<Animal> getAnimalsWhereNameMoreThenTwoWords(List<Animal> animals) {
         return animals.stream()
             .filter(a -> a.name().split(" ").length > 2)
-            .collect(Collectors.toList());
+            .toList();
     }
 
     //Задание 14 Есть ли в списке собака ростом более k см -> Boolean
@@ -152,7 +152,7 @@ public class AnimalsData {
             .sorted(Comparator.comparing(Animal::type)
                 .thenComparing(Animal::sex)
                 .thenComparing(Animal::name))
-            .collect(Collectors.toList());
+            .toList();
     }
 
     //Задание 17 Правда ли, что пауки кусаются чаще, чем собаки
