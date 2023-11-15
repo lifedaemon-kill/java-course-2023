@@ -11,8 +11,8 @@ public class AverageTime {
     private AverageTime() {
     }
 
-    final static long MINUTE = 60;
-    final static long HOUR = 3600;
+    final static long MINUTE_IN_SECONDS = 60;
+    final static long HOUR_IN_SECONDS = 3600;
 
     public static String averageTime(List<String> twiceDates) {
         //если строка не валидна, то она не учитывается
@@ -41,8 +41,8 @@ public class AverageTime {
             .average()
             .orElse(Double.NaN);
 
-        long hour = average / HOUR;
-        long min = average / MINUTE % MINUTE;
+        long hour = average / HOUR_IN_SECONDS;
+        long min = average / MINUTE_IN_SECONDS % MINUTE_IN_SECONDS;
 
         return String.format("%dч %dм", hour, min);
     }
