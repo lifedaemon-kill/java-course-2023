@@ -9,42 +9,60 @@ public class BetweenTest {
     @Test
     @DisplayName("Корректное значение 1 символ")
     void test1() {
-        boolean result = isLengthBetween1And3("0");
+        String value = "0";
+
+        boolean result = isLengthBetween1And3(value);
+
         assertThat(result).isTrue();
     }
 
     @Test
     @DisplayName("Корректное значение (3 символа)")
     void test2() {
-        boolean result = isLengthBetween1And3("010");
+        String value = "010";
+
+        boolean result = isLengthBetween1And3(value);
+
         assertThat(result).isTrue();
     }
 
     @Test
     @DisplayName("Корректное значение (2 символа)")
     void test3() {
-        boolean result = isLengthBetween1And3("10");
+        String value = "10";
+
+        boolean result = isLengthBetween1And3(value);
+
         assertThat(result).isTrue();
     }
 
     @Test
     @DisplayName("Не корректное значение (Посторонний символ)")
     void test4() {
-        boolean result = isLengthBetween1And3("002");
+        String value = "002";
+
+        boolean result = isLengthBetween1And3(value);
+
         assertThat(result).isFalse();
     }
 
     @Test
     @DisplayName("Не корректное значение (Чисел меньше больше чем 3)")
     void test5() {
-        boolean result = isLengthBetween1And3("0101");
+        String value = "0101";
+
+        boolean result = isLengthBetween1And3(value);
+
         assertThat(result).isFalse();
     }
 
     @Test
     @DisplayName("Не корректное значение (Чисел меньше больше чем 1)")
     void test6() {
-        boolean result = isLengthBetween1And3("");
+        String value = "";
+
+        boolean result = isLengthBetween1And3(value);
+
         assertThat(result).isFalse();
     }
 }

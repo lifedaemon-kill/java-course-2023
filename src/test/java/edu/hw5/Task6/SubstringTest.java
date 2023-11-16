@@ -9,14 +9,22 @@ public class SubstringTest {
     @Test
     @DisplayName("Является подстрокой")
     void test1() {
-        boolean result = isSubstring("abc", "achfdbaabgabcaabg");
+        String sub = "abc";
+        String main = "achfdbaabgabcaabg";
+
+        boolean result = isSubstring(sub, main);
+
         assertThat(result).isTrue();
     }
 
     @Test
     @DisplayName("Не является подстрокой")
     void test2() {
-        boolean result = isSubstring("abc", "acbc");
+        String sub = "abc";
+        String main = "acbc";
+
+        boolean result = isSubstring(sub, main);
+
         assertThat(result).isFalse();
     }
 }

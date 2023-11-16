@@ -11,43 +11,70 @@ public class OneTest {
     @Test
     @DisplayName("Верно для единицы (11)")
     void test1() {
-        boolean result = isFirstDigitMatchesParity("11");
+        String number = "11";
+
+        boolean result = isFirstDigitMatchesParity(number);
+
         assertThat(result).isTrue();
     }
+
     @Test
     @DisplayName("Верно для единицы (1010)")
     void test2() {
-        boolean result = isFirstDigitMatchesParity("1010");
+        String number = "1010";
+
+        boolean result = isFirstDigitMatchesParity(number);
+
         assertThat(result).isTrue();
     }
+
     @Test
     @DisplayName("Верно для единицы (101111)")
     void test3() {
-        boolean result = isFirstDigitMatchesParity("101111");
+        String number = "101111";
+
+        boolean result = isFirstDigitMatchesParity(number);
+
         assertThat(result).isTrue();
     }
+
     @Test
     @DisplayName("Не верно для единицы (101)")
     void test4() {
-        boolean result = isFirstDigitMatchesParity("101");
+        String number = "101";
+
+        boolean result = isFirstDigitMatchesParity(number);
+
         assertThat(result).isFalse();
     }
+
     @Test
     @DisplayName("Не верно для единицы (10112)")
     void test5() {
-        boolean result = isFirstDigitMatchesParity("10112");
+        String number = "10112";
+
+        boolean result = isFirstDigitMatchesParity(number);
+
         assertThat(result).isFalse();
     }
+
     @Test
     @DisplayName("Не верно для единицы (пусто)")
     void test6() {
-        boolean result = isFirstDigitMatchesParity("");
+        String number = "";
+
+        boolean result = isFirstDigitMatchesParity(number);
+
         assertThat(result).isFalse();
     }
+
     @Test
     @DisplayName("Не верно для единицы (01231)")
     void test7() {
-        boolean result = isFirstDigitMatchesParity("01231");
+        String number = "01231";
+
+        boolean result = isFirstDigitMatchesParity(number);
+
         assertThat(result).isFalse();
     }
 }

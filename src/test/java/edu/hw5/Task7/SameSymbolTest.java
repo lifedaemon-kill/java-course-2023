@@ -9,28 +9,39 @@ public class SameSymbolTest {
     @Test
     @DisplayName("Корректное значение 1")
     void test1() {
-        boolean result = isBeginAndEndIsTheSameSymbol("01010");
+        String number = "01010";
+
+        boolean result = isBeginAndEndIsTheSameSymbol(number);
+
         assertThat(result).isTrue();
     }
 
     @Test
     @DisplayName("Корректное значение 2")
     void test2() {
-        boolean result = isBeginAndEndIsTheSameSymbol("11011");
+        String number = "11011";
+
+        boolean result = isBeginAndEndIsTheSameSymbol(number);
+
         assertThat(result).isTrue();
     }
 
     @Test
     @DisplayName("Разные цифры")
     void test3() {
-        boolean result = isBeginAndEndIsTheSameSymbol("110");
+        String number = "110";
+
+        boolean result = isBeginAndEndIsTheSameSymbol(number);
+
         assertThat(result).isFalse();
     }
 
     @Test
     @DisplayName("Некорректные символы")
     void test4() {
-        boolean result = isBeginAndEndIsTheSameSymbol("01120");
+        String number = "01120";
+        boolean result = isBeginAndEndIsTheSameSymbol(number);
+
         assertThat(result).isFalse();
     }
 }

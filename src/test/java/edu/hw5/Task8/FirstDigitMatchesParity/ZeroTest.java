@@ -11,43 +11,70 @@ public class ZeroTest {
     @Test
     @DisplayName("Верно для нуля (001)")
     void test1() {
-        boolean result = isFirstDigitMatchesParity("001");
+        String number = "001";
+
+        boolean result = isFirstDigitMatchesParity(number);
+
         assertThat(result).isTrue();
     }
+
     @Test
     @DisplayName("Верно для нуля (0)")
     void test2() {
-        boolean result = isFirstDigitMatchesParity("0");
+        String number = "0";
+
+        boolean result = isFirstDigitMatchesParity(number);
+
         assertThat(result).isTrue();
     }
+
     @Test
     @DisplayName("Верно для нуля (01111)")
     void test3() {
-        boolean result = isFirstDigitMatchesParity("01111");
+        String number = "01111";
+
+        boolean result = isFirstDigitMatchesParity(number);
+
         assertThat(result).isTrue();
     }
+
     @Test
     @DisplayName("Не верно для нуля (01)")
     void test4() {
-        boolean result = isFirstDigitMatchesParity("01");
+        String number = "01";
+
+        boolean result = isFirstDigitMatchesParity(number);
+
         assertThat(result).isFalse();
     }
+
     @Test
     @DisplayName("Не верно для нуля (0112)")
     void test5() {
-        boolean result = isFirstDigitMatchesParity("0112");
+        String number = "0112";
+
+        boolean result = isFirstDigitMatchesParity(number);
+
         assertThat(result).isFalse();
     }
+
     @Test
     @DisplayName("Не верно для нуля (пусто)")
     void test6() {
-        boolean result = isFirstDigitMatchesParity("");
+        String number = "";
+
+        boolean result = isFirstDigitMatchesParity(number);
+
         assertThat(result).isFalse();
     }
+
     @Test
     @DisplayName("Не верно для нуля (01231)")
     void test7() {
-        boolean result = isFirstDigitMatchesParity("01231");
+        String number = "01231";
+
+        boolean result = isFirstDigitMatchesParity(number);
+
         assertThat(result).isFalse();
     }
 }

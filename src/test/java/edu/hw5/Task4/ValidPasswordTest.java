@@ -9,19 +9,28 @@ public class ValidPasswordTest {
     @Test
     @DisplayName("Строка содержит 1 спец символ")
     void test1() {
-        boolean result = ValidPassword.isPasswordHaveSpecSymbol("Hello World!");
+        String pass = "Hello World!";
+
+        boolean result = ValidPassword.isPasswordHaveSpecSymbol(pass);
+
         assertThat(result).isTrue();
     }
     @Test
     @DisplayName("Строка содержит несколько спец символов")
     void test2() {
-        boolean result = ValidPassword.isPasswordHaveSpecSymbol("#Hello%world~");
+        String pass = "#Hello%world~";
+
+        boolean result = ValidPassword.isPasswordHaveSpecSymbol(pass);
+
         assertThat(result).isTrue();
     }
     @Test
     @DisplayName("Строка не содержит спец символы")
     void test3() {
-        boolean result = ValidPassword.isPasswordHaveSpecSymbol("Hello world");
+        String pass = "Hello world";
+
+        boolean result = ValidPassword.isPasswordHaveSpecSymbol(pass);
+
         assertThat(result).isFalse();
     }
 }

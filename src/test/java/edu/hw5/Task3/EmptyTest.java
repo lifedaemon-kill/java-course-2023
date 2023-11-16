@@ -11,14 +11,18 @@ public class EmptyTest {
     @Test
     @DisplayName("Некорректные значения(Текст)")
     void test1() {
-        Optional<LocalDate> result = parseDate("Hello world");
+        String date = "Hello world";
+
+        Optional<LocalDate> result = parseDate(date);
 
         assertThat(result).isEmpty();
     }
     @Test
     @DisplayName("Некорректные значения(Отсутствующий тип)")
     void test2() {
-        Optional<LocalDate> result = parseDate("10-10-2023");
+        String date = "10-10-2023";
+
+        Optional<LocalDate> result = parseDate(date);
 
         assertThat(result).isEmpty();
     }

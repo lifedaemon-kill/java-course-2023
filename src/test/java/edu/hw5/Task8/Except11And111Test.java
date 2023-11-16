@@ -8,30 +8,34 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class Except11And111Test {
 
     @Test
-    @DisplayName("Корректное значение 1")
+    @DisplayName("Корректное значение 1111")
     void test1() {
-        boolean result = isExcept11And111("11111");
+        String number = "1111";
+        boolean result = isExcept11And111(number);
         assertThat(result).isTrue();
     }
 
     @Test
-    @DisplayName("Корректное значение 1")
+    @DisplayName("Корректное значение 110")
     void test2() {
-        boolean result = isExcept11And111("110");
+        String number = "110";
+        boolean result = isExcept11And111(number);
         assertThat(result).isTrue();
     }
 
     @Test
     @DisplayName("Ошибка 11")
     void test3() {
-        boolean result = isExcept11And111("11");
+        String number = "11";
+        boolean result = isExcept11And111(number);
         assertThat(result).isFalse();
     }
 
     @Test
     @DisplayName("Ошибка 111")
     void test4() {
-        boolean result = isExcept11And111("11");
+        String number = "111";
+        boolean result = isExcept11And111(number);
         assertThat(result).isFalse();
     }
 }

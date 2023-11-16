@@ -9,49 +9,56 @@ public class EveryOddEqual1Test {
     @Test
     @DisplayName("Верное значение (01)")
     void test1() {
-        boolean result = isEveryOddEqual1("01");
+        String number = "01";
+        boolean result = isEveryOddEqual1(number);
         assertThat(result).isTrue();
     }
 
     @Test
     @DisplayName("Верное значение (0)")
     void test2() {
-        boolean result = isEveryOddEqual1("0");
+        String number = "0";
+        boolean result = isEveryOddEqual1(number);
         assertThat(result).isTrue();
     }
 
     @Test
     @DisplayName("Верное значение (011101011101)")
     void test3() {
-        boolean result = isEveryOddEqual1("011101011101");
+        String number = "011101011101";
+        boolean result = isEveryOddEqual1(number);
         assertThat(result).isTrue();
     }
 
     @Test
     @DisplayName("Неверное значение (10)")
     void test4() {
-        boolean result = isEveryOddEqual1("10");
+        String number = "10";
+        boolean result = isEveryOddEqual1(number);
         assertThat(result).isFalse();
     }
 
     @Test
     @DisplayName("Неверное значение (пусто)")
     void test5() {
-        boolean result = isEveryOddEqual1("");
+        String number = "";
+        boolean result = isEveryOddEqual1(number);
         assertThat(result).isFalse();
     }
 
     @Test
     @DisplayName("Неверное значение (1100)")
     void test6() {
-        boolean result = isEveryOddEqual1("1100");
+        String number = "1100";
+        boolean result = isEveryOddEqual1(number);
         assertThat(result).isFalse();
     }
 
     @Test
     @DisplayName("Неверное значение (11111110)")
     void test7() {
-        boolean result = isEveryOddEqual1("11111110");
+        String number = "11111110";
+        boolean result = isEveryOddEqual1(number);
         assertThat(result).isFalse();
     }
 }

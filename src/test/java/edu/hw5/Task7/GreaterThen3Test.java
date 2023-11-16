@@ -9,31 +9,50 @@ public class GreaterThen3Test {
     @Test
     @DisplayName("Корректное значение 1")
     void test1() {
-        boolean result = isGreaterThen3DigitsAnd3ndIs0("0101");
+        String number = "0101";
+
+        boolean result = isGreaterThen3DigitsAnd3ndIs0(number);
+
         assertThat(result).isTrue();
     }
+
     @Test
     @DisplayName("Корректное значение 2")
     void test2() {
-        boolean result = isGreaterThen3DigitsAnd3ndIs0("010");
+        String number = "010";
+
+        boolean result = isGreaterThen3DigitsAnd3ndIs0(number);
+
         assertThat(result).isTrue();
     }
+
     @Test
     @DisplayName("Не корректное значение (3 цифра не равна 0)")
     void test3() {
-        boolean result = isGreaterThen3DigitsAnd3ndIs0("0111");
+        String number = "0111";
+
+        boolean result = isGreaterThen3DigitsAnd3ndIs0(number);
+
         assertThat(result).isFalse();
     }
+
     @Test
     @DisplayName("Не корректное значение (Посторонний символ)")
     void test4() {
-        boolean result = isGreaterThen3DigitsAnd3ndIs0("0102");
+        String number = "0102";
+
+        boolean result = isGreaterThen3DigitsAnd3ndIs0(number);
+
         assertThat(result).isFalse();
     }
+
     @Test
     @DisplayName("Не корректное значение (Чисел меньше чем 3)")
     void test5() {
-        boolean result = isGreaterThen3DigitsAnd3ndIs0("01");
+        String number = "01";
+
+        boolean result = isGreaterThen3DigitsAnd3ndIs0(number);
+
         assertThat(result).isFalse();
     }
 }

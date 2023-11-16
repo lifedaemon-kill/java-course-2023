@@ -9,42 +9,48 @@ public class OddTest {
     @Test
     @DisplayName("Нечетное число 1")
     void test1() {
-        boolean result = isOddLength("010");
+        String number = "010";
+        boolean result = isOddLength(number);
         assertThat(result).isTrue();
     }
 
     @Test
     @DisplayName("Нечетное число 2")
     void test2() {
-        boolean result = isOddLength("10101");
+        String number = "10101";
+        boolean result = isOddLength(number);
         assertThat(result).isTrue();
     }
 
     @Test
     @DisplayName("Нечетное число 3")
     void test3() {
-        boolean result = isOddLength("11111");
+        String number = "11111";
+        boolean result = isOddLength(number);
         assertThat(result).isTrue();
     }
 
     @Test
     @DisplayName("Четное число цифр 1")
     void test4() {
-        boolean result = isOddLength("111111");
+        String number = "111111";
+        boolean result = isOddLength(number);
         assertThat(result).isFalse();
     }
 
     @Test
     @DisplayName("Четное число цифр 2")
     void test5() {
-        boolean result = isOddLength("11");
+        String number = "11";
+        boolean result = isOddLength(number);
         assertThat(result).isFalse();
     }
 
     @Test
     @DisplayName("Неверное число")
     void test6() {
-        boolean result = isOddLength("121");
+        String number = "121";
+        boolean result = isOddLength(number);
         assertThat(result).isFalse();
     }
 }

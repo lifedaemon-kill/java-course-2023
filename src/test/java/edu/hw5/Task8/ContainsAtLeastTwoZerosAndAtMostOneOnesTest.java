@@ -9,63 +9,72 @@ public class ContainsAtLeastTwoZerosAndAtMostOneOnesTest {
     @Test
     @DisplayName("Верная последовательность (001)")
     void test1() {
-        boolean result = isContainsAtLeastTwoZerosAndAtMostOneOnes("001");
+        String number = "001";
+        boolean result = isContainsAtLeastTwoZerosAndAtMostOneOnes(number);
         assertThat(result).isTrue();
     }
 
     @Test
     @DisplayName("Верная последовательность (010)")
     void test2() {
-        boolean result = isContainsAtLeastTwoZerosAndAtMostOneOnes("010");
+        String number = "010";
+        boolean result = isContainsAtLeastTwoZerosAndAtMostOneOnes(number);
         assertThat(result).isTrue();
     }
 
     @Test
     @DisplayName("Верная последовательность (0010)")
     void test3() {
-        boolean result = isContainsAtLeastTwoZerosAndAtMostOneOnes("0010");
+        String number = "0010";
+        boolean result = isContainsAtLeastTwoZerosAndAtMostOneOnes(number);
         assertThat(result).isTrue();
     }
 
     @Test
     @DisplayName("Верная последовательность (00)")
     void test4() {
-        boolean result = isContainsAtLeastTwoZerosAndAtMostOneOnes("00");
+        String number = "00";
+        boolean result = isContainsAtLeastTwoZerosAndAtMostOneOnes(number);
         assertThat(result).isTrue();
     }
 
     @Test
     @DisplayName("Верная последовательность (000100)")
     void test5() {
-        boolean result = isContainsAtLeastTwoZerosAndAtMostOneOnes("000100");
+        String number = "000100";
+        boolean result = isContainsAtLeastTwoZerosAndAtMostOneOnes(number);
         assertThat(result).isTrue();
     }
 
     @Test
     @DisplayName("Верная последовательность (00000)")
     void test6() {
-        boolean result = isContainsAtLeastTwoZerosAndAtMostOneOnes("00000");
+        String number = "00000";
+        boolean result = isContainsAtLeastTwoZerosAndAtMostOneOnes(number);
         assertThat(result).isTrue();
     }
 
     @Test
     @DisplayName("Неверная последовательность (10)")
     void test7() {
-        boolean result = isContainsAtLeastTwoZerosAndAtMostOneOnes("10");
+        String number = "10";
+        boolean result = isContainsAtLeastTwoZerosAndAtMostOneOnes(number);
         assertThat(result).isFalse();
     }
 
     @Test
     @DisplayName("Неверная последовательность (1)")
     void test8() {
-        boolean result = isContainsAtLeastTwoZerosAndAtMostOneOnes("1");
+        String number = "1";
+        boolean result = isContainsAtLeastTwoZerosAndAtMostOneOnes(number);
         assertThat(result).isFalse();
     }
 
     @Test
     @DisplayName("Неверная последовательность (110000)")
     void test9() {
-        boolean result = isContainsAtLeastTwoZerosAndAtMostOneOnes("110000");
+        String number = "110000";
+        boolean result = isContainsAtLeastTwoZerosAndAtMostOneOnes(number);
         assertThat(result).isFalse();
     }
 }
