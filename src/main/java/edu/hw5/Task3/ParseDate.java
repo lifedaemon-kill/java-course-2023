@@ -10,12 +10,7 @@ import java.util.Optional;
 public class ParseDate {
     private ParseDate() {
     }
-
-    /*
-
-    1/3/1976
-    1/3/20
-     */
+    
     public static Optional<LocalDate> parseDate(String date) {
         AbstractParser parser = AbstractParser.link(
             new DateAsWordParser(),
