@@ -6,7 +6,9 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 public class AverageTime {
     private AverageTime() {
     }
@@ -24,6 +26,7 @@ public class AverageTime {
             try {
                 splitDate = date.split(" - ");
                 if (splitDate.length != 2) {
+                    log.error("Неверное количество аргументов");
                     throw new Exception();
                 }
                 Date date1 = format.parse(splitDate[0]);
@@ -34,6 +37,7 @@ public class AverageTime {
 
                 durationList.add(Duration.between(instant1, instant2));
             } catch (Exception ignored) {
+                log.error("Неверное приведение даты!");
             }
         }
         long average = (long) durationList.stream()
