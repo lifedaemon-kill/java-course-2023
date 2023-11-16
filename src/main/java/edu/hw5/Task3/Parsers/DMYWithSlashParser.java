@@ -22,8 +22,8 @@ public class DMYWithSlashParser extends AbstractParser {
             year = Integer.parseUnsignedInt(split[2]);
 
             result = LocalDate.of(year, month, day);
-
             return result;
+
         } catch (NumberFormatException | DateTimeException e) {
             return checkNext(date);
         }
