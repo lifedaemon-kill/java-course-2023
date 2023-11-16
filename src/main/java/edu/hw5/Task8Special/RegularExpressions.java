@@ -27,7 +27,7 @@ public class RegularExpressions {
 
     //любая строка, кроме 11 или 111
     public static boolean isExcept11And111(String number) {
-        Pattern pattern = Pattern.compile("^(^(11)|^(111))[01]+$");
+        Pattern pattern = Pattern.compile("^(?!11$|111$)[01]*");
         Matcher matcher = pattern.matcher(number);
 
         return matcher.find();
