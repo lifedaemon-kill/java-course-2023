@@ -10,7 +10,7 @@ import java.util.Optional;
 public class ParseDate {
     private ParseDate() {
     }
-    
+
     public static Optional<LocalDate> parseDate(String date) {
         AbstractParser parser = AbstractParser.link(
             new DateAsWordParser(),
