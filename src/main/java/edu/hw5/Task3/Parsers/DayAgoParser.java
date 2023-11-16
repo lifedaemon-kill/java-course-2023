@@ -8,9 +8,10 @@ public class DayAgoParser extends AbstractParser {
     @Override
     public LocalDate check(String date) {
         String[] split = date.split(" ");
-        if (split.length != COUNT_OF_DAYS_AGO_PARTS
-            || (!split[1].equals("day") && !split[1].equals("days"))
-            || !split[2].equals("ago")) {
+
+        if (COUNT_OF_DAYS_AGO_PARTS != split.length
+            || (!"day".equals(split[1]) && !"days".equals(split[1]))
+            || (!"ago".equals(split[2]))) {
             return checkNext(date);
         }
         long day;
