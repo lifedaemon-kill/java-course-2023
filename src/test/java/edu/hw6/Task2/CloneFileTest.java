@@ -27,14 +27,14 @@ import static org.assertj.core.api.Assertions.assertThat;
                 if (file.delete()) {
                     log.info("Файл успешно удален!");
                 } else {
-                    log.error("Файл не был удален!");
+                    log.info("Файл не был удален!");
                 }
             } else {
                 nice = true;
                 log.info("Файл не был создан!");
             }
         } catch (Exception e) {
-            log.error(e.getMessage());
+            log.info(e.getMessage());
         }
 
         assertThat(nice).isTrue();
@@ -51,7 +51,7 @@ import static org.assertj.core.api.Assertions.assertThat;
         boolean nice = false;
 
         if (fileTarget.exists()) {
-            log.error("файл уже существует! Удаляем!");
+            log.info("файл уже существует! Удаляем!");
             fileTarget.delete();
         } else {
             cloneFile(path);
@@ -66,7 +66,7 @@ import static org.assertj.core.api.Assertions.assertThat;
                     assertThat(original).isEqualTo(expected);
 
                 } catch (IOException e) {
-                    log.error("Не удалось считать файл");
+                    log.info("Не удалось считать файл");
                 }
             }
             fileCopy.delete();
@@ -86,11 +86,11 @@ import static org.assertj.core.api.Assertions.assertThat;
         boolean nice = false;
 
         if (copyFile1.exists()) {
-            log.error("Первая копия уже существует! Удаление");
+            log.info("Первая копия уже существует! Удаление");
             copyFile1.delete();
         }
         if (copyFile2.exists()) {
-            log.error("Вторая копия уже существует! Удаление");
+            log.info("Вторая копия уже существует! Удаление");
             copyFile2.delete();
         }
 
@@ -112,7 +112,7 @@ import static org.assertj.core.api.Assertions.assertThat;
             nice = true;
 
         } catch (Exception e) {
-            log.error(e.getMessage());
+            log.info(e.getMessage());
         }
 
         copyFile1.delete();
