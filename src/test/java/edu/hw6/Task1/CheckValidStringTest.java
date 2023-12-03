@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CheckValidStringTest {
 
     @Test
-    void test() {
+    void checkValidStringTest() {
         //Arrange
         final String[] INVALID_STRINGS = {
             "hell:o:world",

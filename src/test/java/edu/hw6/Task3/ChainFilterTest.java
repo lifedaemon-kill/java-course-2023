@@ -20,7 +20,7 @@ public class ChainFilterTest {
         try (DirectoryStream<Path> entries = Files.newDirectoryStream(dir, regularFile)) {
             entries.forEach(System.out::println);
         } catch (Exception e) {
-            log.error(e.getMessage());
+            log.info(e.getMessage());
         }
     }
 
@@ -34,7 +34,7 @@ public class ChainFilterTest {
         try (DirectoryStream<Path> entries = Files.newDirectoryStream(dir, readable)) {
             entries.forEach(System.out::println);
         } catch (Exception e) {
-            log.error(e.getMessage());
+            log.info(e.getMessage());
         }
     }
 }

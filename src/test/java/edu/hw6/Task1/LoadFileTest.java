@@ -27,7 +27,7 @@ public class LoadFileTest {
         try {
             test = DiskMap.getFromFile(path);
         } catch (Exception e) {
-            log.error(e.getMessage());
+            log.info(e.getMessage());
         }
 
         //Assert
@@ -44,7 +44,7 @@ public class LoadFileTest {
         try {
             test = DiskMap.getFromFile(path);
         } catch (Exception e) {
-            log.error("Ошибка при выполнении!");
+            log.info("Ошибка при выполнении!");
         }
 
         //Assert

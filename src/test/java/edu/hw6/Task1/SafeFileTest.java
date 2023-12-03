@@ -40,7 +40,7 @@ public class SafeFileTest {
                 }
             }
         } catch (Exception e) {
-            log.error(e.getMessage());
+            log.info(e.getMessage());
         }
 
         assertThat(nice).isTrue();
@@ -74,7 +74,7 @@ public class SafeFileTest {
                 if (file.delete()) {
                     log.info("Файл успешно удален!");
                 } else {
-                    log.error("Файл не был удалён!");
+                    log.info("Файл не был удалён!");
                 }
             }
         }
