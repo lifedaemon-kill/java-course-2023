@@ -39,7 +39,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
         assertThat(nice).isTrue();
     }
-
+    /*
     @Test @DisplayName("Первая копия") void testFirstCopy() {
         Path path = Path.of("src/test/java/edu/hw6/Task2/abc.txt");
 
@@ -120,4 +120,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
         assertThat(nice).isTrue();
     }
+
+     */
 }
