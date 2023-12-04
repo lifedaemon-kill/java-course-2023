@@ -25,7 +25,7 @@ public interface AbstractFilter extends DirectoryStream.Filter<Path> {
     }
 
     //Размер файла
-    static AbstractFilter sizeGreaterThan(long size) {
+    static AbstractFilter largerThan(long size) {
         return path -> {
             try {
                 return Files.size(path) > size;
@@ -42,17 +42,25 @@ public interface AbstractFilter extends DirectoryStream.Filter<Path> {
 
     //Имя файла с помощью регулярных выражений
     static AbstractFilter regexContains(String regex) {
+
         return path -> path.getFileName().toString().matches(regex);
     }
 
     //магические начальные идентификаторы
     static AbstractFilter magicNumber(int number, char... magicBytes) {
         return path -> {
-            byte[] magicNumber = Files.readAllBytes(path);
-            return magicNumber[0] == (byte) number
-                   && magicNumber[1] == (byte) magicBytes[0]
-                   && magicNumber[2] == (byte) magicBytes[1]
-                   && magicNumber[magicBytes.length] == (byte) magicBytes[2];
+            byte[] fileHeader = Files.readAllBytes(path);
+
+            int countOfMagicNumbers = 4;
+
+            if (fileHeader.length >= countOfMagicNumbers) {
+                return fileHeader[0] == (byte) number
+                       && fileHeader[1] == (byte) magicBytes[0]
+                       && fileHeader[2] == (byte) magicBytes[1]
+                       && fileHeader[countOfMagicNumbers - 1] == (byte) magicBytes[2];
+            } else {
+                return false;
+            }
         };
     }
 }
