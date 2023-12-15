@@ -56,7 +56,7 @@ public class DiskMap {
 
             return data;
         } catch (Exception e) {
-            log.info(e.getMessage());
+            log.error(e.getMessage());
             throw new Exception(e);
         }
     }
@@ -72,7 +72,7 @@ public class DiskMap {
             }
 
         } catch (Exception e) {
-            log.info(e.getMessage());
+            log.error(e.getMessage());
             throw new Exception(e);
         }
     }

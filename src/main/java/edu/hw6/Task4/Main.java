@@ -32,7 +32,7 @@ public class Main {
             log.info("Запись в файл успешно выполнена.");
 
         } catch (IOException e) {
-            log.info("Произошла ошибка при записи в файл: " + e.getMessage());
+            log.error("Произошла ошибка при записи в файл: " + e.getMessage());
         }
     }
 }

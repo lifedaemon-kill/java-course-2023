@@ -20,7 +20,7 @@ class CloneFile {
             Files.copy(path, destinationPath);
             log.info("File copied successfully to:" + destinationPath);
         } catch (IOException e) {
-            log.info("Не удалось скопировать файл!" + "\n" + path + "\n" + destinationPath);
+            log.error("Не удалось скопировать файл!" + "\n" + path + "\n" + destinationPath);
         }
     }
 
