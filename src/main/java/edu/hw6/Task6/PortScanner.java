@@ -1,11 +1,12 @@
 package edu.hw6.Task6;
 
-import lombok.extern.log4j.Log4j2;
 import java.io.IOException;
 import java.net.DatagramSocket;
 import java.net.ServerSocket;
 import java.util.HashMap;
 import java.util.Map;
+import lombok.extern.log4j.Log4j2;
+
 @Log4j2
 @SuppressWarnings({"MagicNumber", "RegexpSinglelineJava"})
 public class PortScanner {
