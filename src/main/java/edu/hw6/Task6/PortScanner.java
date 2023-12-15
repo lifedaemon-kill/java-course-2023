@@ -1,11 +1,12 @@
 package edu.hw6.Task6;
 
+import lombok.extern.log4j.Log4j2;
 import java.io.IOException;
 import java.net.DatagramSocket;
 import java.net.ServerSocket;
 import java.util.HashMap;
 import java.util.Map;
-
+@Log4j2
 @SuppressWarnings({"MagicNumber", "RegexpSinglelineJava"})
 public class PortScanner {
 
@@ -14,7 +15,7 @@ public class PortScanner {
 
     private final static int MAX_PORT = 49151;
     private final static int MIN_PORT = 0;
-    private final static String HEADER = "%-10s %-8s %s\n";
+    private final static String HEADER = "%-10s %-8s %s";
     private static final Map<Integer, String> PORT_DICTIONARY = new HashMap<>();
 
     static {
@@ -74,8 +75,8 @@ public class PortScanner {
     }
 
     public static void scanPorts() {
-        System.out.println("Запуск сканирования портов: " + MIN_PORT + "-" + MAX_PORT);
-        System.out.printf(HEADER, "Протокол", "Порт", "Сервис");
+        log.info("Запуск сканирования портов: " + MIN_PORT + "-" + MAX_PORT);
+        log.info(HEADER.formatted("Протокол", "Порт", "Сервис"));
         String portInfo;
 
         for (int port = MIN_PORT; port < MAX_PORT; port++) {
@@ -88,7 +89,7 @@ public class PortScanner {
                 } else {
                     portInfo = "";
                 }
-                System.out.printf(HEADER.formatted("TCP", port, portInfo));
+                log.info(HEADER.formatted("TCP", port, portInfo));
             }
             try {
                 DatagramSocket datagramSocket = new DatagramSocket(port);
@@ -100,9 +101,9 @@ public class PortScanner {
                 } else {
                     portInfo = "";
                 }
-                System.out.printf(HEADER.formatted("UDP", port, portInfo));
+                log.info(HEADER.formatted("UDP", port, portInfo));
             }
         }
-        System.out.println("\n\nСканирование завершено");
+        log.info("Сканирование завершено");
     }
 }
