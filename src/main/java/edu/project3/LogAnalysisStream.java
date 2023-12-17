@@ -26,9 +26,11 @@ public class LogAnalysisStream {
 
     public LogAnalysisStream generalInfo() {
         String header = "| %-24s | %10s |\n";
-        text += "####### Общая информация\n"
-                + "|          Метрика         |   Значение |\n"
-                + "|:------------------------:|:----------:|\n";
+        text += """
+            ####### Общая информация
+            |          Метрика         |   Значение |
+            |:------------------------:|:----------:|
+            """;
 
         int numberOfRequests = logs.size();
 
@@ -58,10 +60,10 @@ public class LogAnalysisStream {
         long countOfZeroByte = 0L;
 
         for (var item : logs) {
-            if (item.BodyBytesSent() == 0) {
+            if (item.bodyBytesSent() == 0) {
                 countOfZeroByte += 1;
             } else {
-                averageResponse += item.BodyBytesSent();
+                averageResponse += item.bodyBytesSent();
             }
         }
 
@@ -76,9 +78,9 @@ public class LogAnalysisStream {
         return this;
     }
 
+    @SuppressWarnings("MagicNumber")
     public LogAnalysisStream serverResponseCodes() {
         Map<Integer, Integer> map = new HashMap<>();
-
 
         for (var item : this.logs) {
             if (map.containsKey(item.response())) {
@@ -206,7 +208,7 @@ public class LogAnalysisStream {
         String header = "| %-20s | %10s |\n";
         text += "####### Запрашиваемые ресурсы\n" +
                 header.formatted("Ресурс", "Количество")
-                + "|:"+"-".repeat(20)+":|:" + "-".repeat(10) + ":|\n";
+                + "|:" + "-".repeat(20) + ":|:" + "-".repeat(10) + ":|\n";
         for (var item : sortedMap.entrySet()) {
             text += header.formatted(item.getKey(), item.getValue().toString());
         }
@@ -215,21 +217,21 @@ public class LogAnalysisStream {
     }
 
     //Extra
-    public LogAnalysisStream httpAgents(){
+    public LogAnalysisStream httpAgents() {
         Map<String, Integer> map = new HashMap<>();
 
         for (var item : this.logs) {
             String httpAgent = item.httpUserAgent();
-            if(httpAgent.contains(" ")) {
+            if (httpAgent.contains(" ")) {
                 httpAgent = item.httpUserAgent().substring(0, item.httpUserAgent().indexOf(" "));
             }
 
-            if (map.containsKey(httpAgent)){
+            if (map.containsKey(httpAgent)) {
                 map.put(httpAgent, map.get(httpAgent) + 1);
             } else {
                 map.put(httpAgent, 1);
-            }}
-
+            }
+        }
 
         //Sort
         LinkedHashMap<String, Integer> sortedMap = new LinkedHashMap<>();
@@ -242,7 +244,7 @@ public class LogAnalysisStream {
         String header = "| %-23s | %10s |\n";
         text += "####### Http Агенты\n" +
                 header.formatted("Название", "Количество")
-                + "|:"+"-".repeat(23)+":|:" + "-".repeat(10) + ":|\n";
+                + "|:" + "-".repeat(23) + ":|:" + "-".repeat(10) + ":|\n";
         for (var item : sortedMap.entrySet()) {
             text += header.formatted(item.getKey(), item.getValue().toString());
         }
@@ -250,17 +252,18 @@ public class LogAnalysisStream {
         return this;
     }
 
-    public LogAnalysisStream highLoad(){
+    public LogAnalysisStream highLoad() {
         Map<String, Integer> map = new HashMap<>();
 
         for (var item : this.logs) {
             String address = item.address();
 
-            if (map.containsKey(address)){
+            if (map.containsKey(address)) {
                 map.put(address, map.get(address) + 1);
             } else {
                 map.put(address, 1);
-            }}
+            }
+        }
 
         //Sort
         LinkedHashMap<String, Integer> sortedMap = new LinkedHashMap<>();
@@ -274,7 +277,7 @@ public class LogAnalysisStream {
         String header = "| %-23s | %10s |\n";
         text += "####### Активные пользователи\n" +
                 header.formatted("Название", "Количество")
-                + "|:"+"-".repeat(23)+":|:" + "-".repeat(10) + ":|\n";
+                + "|:" + "-".repeat(23) + ":|:" + "-".repeat(10) + ":|\n";
 
         for (var item : sortedMap.entrySet()) {
             text += header.formatted(item.getKey(), item.getValue().toString());

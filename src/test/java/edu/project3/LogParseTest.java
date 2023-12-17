@@ -36,11 +36,13 @@ public class LogParseTest {
             System.out.println(log);
         }
     }
+
     @Test
     @DisplayName("From и To работают корректно")
     void test3() throws Exception {
-        String[] args = "--from 2015-05-17T08:05:10+00:00 --to 2015-05-17T08:05:26+00:00 --path src/test/java/edu/project3/files/small2-log.txt"
-            .split(" ");
+        String[] args =
+            "--from 2015-05-17T08:05:10+00:00 --to 2015-05-17T08:05:26+00:00 --path src/test/java/edu/project3/files/small2-log.txt"
+                .split(" ");
 
         var args1 = getArgs(args);
         String text = getTextFromPaths(args1.path);

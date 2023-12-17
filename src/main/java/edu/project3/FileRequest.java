@@ -1,6 +1,5 @@
 package edu.project3;
 
-import java.io.File;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -14,8 +13,6 @@ import lombok.extern.log4j.Log4j2;
 public class FileRequest {
     private FileRequest() {
     }
-
-
 
     public static String getTextFromPaths(List<String> path) {
         StringBuilder mergedContent = new StringBuilder();

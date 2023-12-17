@@ -1,7 +1,8 @@
 package edu.project3;
 
-import lombok.extern.log4j.Log4j2;
 import java.util.List;
+import lombok.extern.log4j.Log4j2;
+
 @Log4j2
 @SuppressWarnings("RegexpSinglelineJava")
 public class LogStats {
@@ -31,14 +32,10 @@ public class LogStats {
             """;
 
     public static void getHelp() {
-        log.info("\n"+HELP);
+        log.info("\n" + HELP);
     }
 
-    public static void main(String[] args) {
-
-    }
-
-    public static void runStats(String[] args){
+    public static void runStats(String[] args) {
         if (args.length == 1 && "-h".equals(args[0])) {
             getHelp();
             return;

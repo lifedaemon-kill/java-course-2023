@@ -7,7 +7,7 @@ public record LogRecord(String address,
                         OffsetDateTime timeLocal,
                         ServerRequestRecord request,
                         int response,
-                        int BodyBytesSent,
+                        int bodyBytesSent,
                         String httpReferer,
                         String httpUserAgent) {
 }

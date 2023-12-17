@@ -23,6 +23,7 @@ public class LogParser {
         return parseLogsFromTo(text, null, null);
     }
 
+    @SuppressWarnings("MagicNumber")
     public static List<LogRecord> parseLogsFromTo(String text, OffsetDateTime from, OffsetDateTime to) {
         Scanner scanner = new Scanner(text);
         List<LogRecord> result = new ArrayList<>();
@@ -64,11 +65,11 @@ public class LogParser {
 //HTTP REFERER
             leftIndex = line.indexOf("\"", rightIndex + 1) + 1;
             rightIndex = line.indexOf("\"", leftIndex);
-            String http_referer = line.substring(leftIndex, rightIndex);
+            String httpReferer = line.substring(leftIndex, rightIndex);
 //HTTP USER AGENT
             leftIndex = line.indexOf("\"", rightIndex + 1) + 1;
             rightIndex = line.indexOf("\"", leftIndex);
-            String http_user_agent = line.substring(leftIndex, rightIndex);
+            String httpUserAgent = line.substring(leftIndex, rightIndex);
 
             result.add(new LogRecord(
                 address,
@@ -77,8 +78,8 @@ public class LogParser {
                 serverRequest,
                 response,
                 b,
-                http_referer,
-                http_user_agent
+                httpReferer,
+                httpUserAgent
             ));
         }
 

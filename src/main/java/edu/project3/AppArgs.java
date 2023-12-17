@@ -1,7 +1,5 @@
 package edu.project3;
 
-import java.io.File;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -16,9 +14,14 @@ public class AppArgs {
     public List<String> path = new ArrayList<>();
     public OffsetDateTime from;
     public OffsetDateTime to;
-    public String format = "console";
-    private static final Set<String> KEYWORDS = Set.of("--path", "--from", "--to", "--format");
-    private static final Set<String> OUTPUT_KEYWORDS = Set.of("adoc", "console", "markdown");
+    public String format = CONSOLE;
+    private final static String CONSOLE = "console";
+    private final static String PATH_ARG = "--path";
+    private final static String FROM_ARG = "--from";
+    private final static String TO_ARG = "--to";
+    private final static String FORMAT_ARG = "--format";
+    private final static Set<String> KEYWORDS = Set.of(PATH_ARG, FROM_ARG, TO_ARG, FORMAT_ARG);
+    private final static Set<String> OUTPUT_KEYWORDS = Set.of("adoc", CONSOLE, "markdown");
 
     private AppArgs() {
     }
@@ -37,69 +40,79 @@ public class AppArgs {
         int i = 0;
 
         while (i < args.length) {
-            if ("--path".equals(args[i]) ) {
-                if(fPath){throw new Exception("Argument --path was given several times");}
-                fPath = true;
-                i++;
-                for (; i < args.length; i++) {
-                    if (isPathOrURL(args[i])) {
-                        fPathNotEmpty = true;
-                        appArgs.path.add(args[i]);
-                        log.info("Args: add --path: " + args[i]);
-                    } else if (KEYWORDS.contains(args[i]) && fPathNotEmpty) {
-                        break;
-                    } else if (KEYWORDS.contains(args[i]) && !fPathNotEmpty) {
-                        throw new Exception("After --path no path");
-                    } else {
-                        throw new Exception("No such file or url:" + args[i]);
+            switch (args[i]) {
+                case PATH_ARG -> {
+                    if (fPath) {
+                        throw new Exception("Argument --path was given several times");
+                    }
+                    fPath = true;
+                    i++;
+                    for (; i < args.length; i++) {
+                        if (isPathOrURL(args[i])) {
+                            fPathNotEmpty = true;
+                            appArgs.path.add(args[i]);
+                            log.info("Args: add --path: " + args[i]);
+                        } else if (KEYWORDS.contains(args[i]) && fPathNotEmpty) {
+                            break;
+                        } else if (KEYWORDS.contains(args[i]) && !fPathNotEmpty) {
+                            throw new Exception("After --path no path");
+                        } else {
+                            throw new Exception("No such file or url:" + args[i]);
+                        }
                     }
                 }
-            }
-            else if ("--from".equals(args[i])) {
-                if(fFromNotEmpty){throw new Exception("Argument --from was given several times");}
-                i++;
-                try {
-                    appArgs.from = OffsetDateTime.parse(args[i]);
-                    fFromNotEmpty = true;
-                    log.info("Args: add --from: " + args[i]);
+                case FROM_ARG -> {
+                    if (fFromNotEmpty) {
+                        throw new Exception("Argument --from was given several times");
+                    }
                     i++;
-                } catch (Exception e) {
-                    if (KEYWORDS.contains(args[i])) {
-                        throw new Exception("No one argument after --from");
-                    } else {
-                        throw new Exception("Wrong patter of time. Use -h or --help for information");
+                    try {
+                        appArgs.from = OffsetDateTime.parse(args[i]);
+                        fFromNotEmpty = true;
+                        log.info("Args: add --from: " + args[i]);
+                        i++;
+                    } catch (Exception e) {
+                        if (KEYWORDS.contains(args[i])) {
+                            throw new Exception("No one argument after --from");
+                        } else {
+                            throw new Exception("Wrong patter of time. Use -h or --help for information");
+                        }
                     }
                 }
-            }
-            else if ("--to".equals(args[i])) {
-                if(fToNotEmpty){throw new Exception("Argument --to was given several times");}
-                i++;
-                try {
-                    appArgs.to = OffsetDateTime.parse(args[i]);
-                    fToNotEmpty = true;
-                    log.info("Args: add --to: " + args[i]);
+                case TO_ARG -> {
+                    if (fToNotEmpty) {
+                        throw new Exception("Argument --to was given several times");
+                    }
                     i++;
-                } catch (Exception e) {
-                    if (KEYWORDS.contains(args[i])) {
-                        throw new Exception("No one argument after --to");
-                    } else {
-                        throw new Exception("Wrong patter of time. Use -h or --help for information");
+                    try {
+                        appArgs.to = OffsetDateTime.parse(args[i]);
+                        fToNotEmpty = true;
+                        log.info("Args: add --to: " + args[i]);
+                        i++;
+                    } catch (Exception e) {
+                        if (KEYWORDS.contains(args[i])) {
+                            throw new Exception("No one argument after --to");
+                        } else {
+                            throw new Exception("Wrong patter of time. Use -h or --help for information");
+                        }
                     }
                 }
-            }
-            else if ("--format".equals(args[i])) {
-                if(fFormatNotEmpty){throw new Exception("Argument --format was given several times");}
-                i++;
-                if (OUTPUT_KEYWORDS.contains(args[i])) {
-                    appArgs.format = args[i];
-                    fFormatNotEmpty = true;
-                    log.info("Args: add --format: " + args[i]);
+                case FORMAT_ARG -> {
+                    if (fFormatNotEmpty) {
+                        throw new Exception("Argument --format was given several times");
+                    }
                     i++;
-                } else {
-                    throw new Exception("No such format. Use -h or --help for information");
+                    if (OUTPUT_KEYWORDS.contains(args[i])) {
+                        appArgs.format = args[i];
+                        fFormatNotEmpty = true;
+                        log.info("Args: add --format: " + args[i]);
+                        i++;
+                    } else {
+                        throw new Exception("No such format. Use -h or --help for information");
+                    }
                 }
+                case null, default -> i++;
             }
-            else {i++;}
         }
 
         if (fPathNotEmpty) {
