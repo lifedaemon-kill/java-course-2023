@@ -4,8 +4,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.Instant;
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
+
 import lombok.extern.log4j.Log4j2;
 import static edu.project3.LogReport.writeType.ADOC;
 import static edu.project3.LogReport.writeType.MARKDOWN;
@@ -16,26 +20,25 @@ public class LogReport {
     }
 
     enum writeType {MARKDOWN, ADOC}
-
+    private final static String dir = "src/test/java/edu/project3/reports";
     private final static String prefix = "/log-report_";
-    private final static Map<writeType, String> postfix = new HashMap<>();
+    private final static Map<String, String> postfix = new HashMap<>();
 
     static {
-        postfix.put(MARKDOWN, ".md");
-        postfix.put(ADOC, ".adoc");
+        postfix.put("markdown", ".md");
+        postfix.put("adoc", ".adoc");
     }
 
-    public static void markdown(String text) {
-        write(text, MARKDOWN);
-    }
+    public static void write(String text, String type) {
+        if(Objects.equals(type, "console")){
+            log.info("\n" + text);
+            return;
+        }
 
-    public static void adoc(String text) {
-        write(text, ADOC);
-    }
+        OffsetDateTime now = OffsetDateTime.parse(Instant.now().toString());
+        var time = now.format(DateTimeFormatter.ofPattern("dd.MM.yyyy_hh.mm.ss"));
 
-    public static void write(String text, writeType type) {
-        Instant instant = Instant.now();
-        Path path = Paths.get(prefix + instant + postfix.get(type));
+        Path path = Paths.get(dir + prefix + time + postfix.get(type));
 
         try {
             byte[] bs = text.getBytes();
@@ -43,9 +46,5 @@ public class LogReport {
         } catch (Exception e) {
             log.error(e.getStackTrace());
         }
-    }
-
-    public static void console(String text) {
-        System.out.println(text);
     }
 }
