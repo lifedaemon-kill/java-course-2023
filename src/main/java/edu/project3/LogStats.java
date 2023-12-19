@@ -23,10 +23,10 @@ public class LogStats {
             \t        \t          NGINX log files as a local template or URL
 
             \t--from  \tOptional: Filter for start date. Use ISO8601 format.
-            \t        \t          Not used by default
+
 
             \t--to    \tOptional: Filter for end date. Use ISO8601 format.
-            \t        \t          Not used by default
+
 
             \t--format\tOptional: Can be markdown, adoc or by default use console
             """;

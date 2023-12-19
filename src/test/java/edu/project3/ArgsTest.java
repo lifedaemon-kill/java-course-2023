@@ -66,7 +66,7 @@ public class ArgsTest {
     }
 
     @Test
-    @DisplayName("Ни одного файла")
+    @DisplayName("Ни одного файла после --path")
     void test4() {
         String[] args = "--path --format markdown"
             .split(" ");
@@ -109,6 +109,20 @@ public class ArgsTest {
     void test6() {
         String[] args =
             "--from 2015-05-17T08:05:10+00:00 --to 2015-05-17T08:05:26+00:00 --path src/test/java/edu/project3/files/small2-log.txt"
+                .split(" ");
+        try {
+            AppArgs request = getArgs(args);
+            log.info(request.from);
+            log.info(request.to);
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
+    }
+    @Test
+    @DisplayName("From + To с лишними символами после")
+    void test7() {
+        String[] args =
+            "--from 2015-05-17T08:05:10+00:00 abc --to 2015-05-17T08:05:26+00:00 --path src/test/java/edu/project3/files/small2-log.txt"
                 .split(" ");
         try {
             AppArgs request = getArgs(args);
