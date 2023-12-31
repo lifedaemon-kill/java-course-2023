@@ -59,7 +59,7 @@ public class AppArgs {
                         } else if (KEYWORDS.contains(args[i]) && !fPathNotEmpty) {
                             throw new Exception("After --path no path");
                         } else {
-                            throw new Exception("No such file or url:" + args[i]);
+                            throw new Exception(String.format("No such file or url: %s", args[i]));
                         }
                     }
                 }
@@ -67,7 +67,7 @@ public class AppArgs {
                     i++;
                     try {
                         appArgs.from = OffsetDateTime.parse(args[i]);
-                        log.info("Args: add --from: " + args[i]);
+                        log.info(String.format("Args: add --from: %s", args[i]));
                         i++;
                     } catch (Exception e) {
                         log.error(e.getMessage());
@@ -78,7 +78,7 @@ public class AppArgs {
                     i++;
                     try {
                         appArgs.to = OffsetDateTime.parse(args[i]);
-                        log.info("Args: add --to: " + args[i]);
+                        log.info(String.format("Args: add --to: %s", args[i]));
                         i++;
                     } catch (Exception e) {
                         log.error(e.getMessage());
@@ -91,7 +91,7 @@ public class AppArgs {
                         throw new Exception("No such format. Use -h or --help for information");
                     }
                     appArgs.format = args[i];
-                    log.info("Args: add --format: " + args[i]);
+                    log.info(String.format("Args: add --format: %s", args[i]));
                     i++;
                 }
                 case null, default -> throw new Exception("Argument exception");

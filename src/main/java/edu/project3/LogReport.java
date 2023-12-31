@@ -27,7 +27,7 @@ public class LogReport {
 
     public static void write(String text, String type) {
         if (Objects.equals(type, "console")) {
-            log.info("\n" + text);
+            log.info(String.format("\n%s", text));
             return;
         }
 
