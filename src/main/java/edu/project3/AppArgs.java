@@ -13,18 +13,20 @@ import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 public class AppArgs {
+    private static final String CONSOLE = "console";
+    private static final String PATH_ARG = "--path";
+    private static final String FROM_ARG = "--from";
+    private static final String TO_ARG = "--to";
+    private static final String FORMAT_ARG = "--format";
+    private static final Set<String> KEYWORDS = Set.of(PATH_ARG, FROM_ARG, TO_ARG, FORMAT_ARG);
+    private static final Set<String> OUTPUT_KEYWORDS = Set.of("adoc", CONSOLE, "markdown");
+    private static final String WRONG_PATTERN_OF_TIME = "Wrong patter of time. Use -h or --help for information";
+
     public List<String> path = new ArrayList<>();
     public OffsetDateTime from;
+
     public OffsetDateTime to;
     public String format = CONSOLE;
-    private final static String CONSOLE = "console";
-    private final static String PATH_ARG = "--path";
-    private final static String FROM_ARG = "--from";
-    private final static String TO_ARG = "--to";
-    private final static String FORMAT_ARG = "--format";
-    private final static Set<String> KEYWORDS = Set.of(PATH_ARG, FROM_ARG, TO_ARG, FORMAT_ARG);
-    private final static Set<String> OUTPUT_KEYWORDS = Set.of("adoc", CONSOLE, "markdown");
-    private final static String WRONG_PATTERN_OF_TIME = "Wrong patter of time. Use -h or --help for information";
 
     private AppArgs() {
     }

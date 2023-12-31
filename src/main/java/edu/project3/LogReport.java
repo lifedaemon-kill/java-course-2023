@@ -16,9 +16,9 @@ public class LogReport {
     private LogReport() {
     }
 
-    private final static String MAIN_DIR = "src/test/java/edu/project3/reports";
-    private final static String PREFIX = "/log-report_";
-    private final static Map<String, String> POSTFIX = new HashMap<>();
+    private static final String MAIN_DIR = "src/test/java/edu/project3/reports";
+    private static final String PREFIX = "/log-report_";
+    private static final Map<String, String> POSTFIX = new HashMap<>();
 
     static {
         POSTFIX.put("markdown", ".md");

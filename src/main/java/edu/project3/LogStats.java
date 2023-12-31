@@ -9,7 +9,7 @@ public class LogStats {
     private LogStats() {
     }
 
-    private final static String HELP =
+    private static final String HELP =
         """
             ████████████████▀█████████████████████████████████████████████████████
             █▄─▄███─▄▄─█─▄▄▄▄████▀▄─██▄─▀█▄─▄██▀▄─██▄─▄███▄─█─▄█░▄▄░▄█▄─▄▄─█▄─▄▄▀█
